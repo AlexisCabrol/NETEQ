@@ -69,7 +69,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\AbstractModel.cs" />
+    <Compile Include="models\enums\Civilite.cs" />
+    <Compile Include="models\enums\Pays.cs" />
+    <Compile Include="models\enums\Statut.cs" />
+    <Compile Include="models\Episode.cs" />
+    <Compile Include="models\Film.cs" />
+    <Compile Include="models\Genre.cs" />
     <Compile Include="models\Media.cs" />
+    <Compile Include="models\Personne.cs" />
+    <Compile Include="models\Saison.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
