@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models.enums
 {
-    enum Civilite
+    public enum Civilite
     {
         Monsieur,
         Madame,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models.enums
 {
-    enum Statut
+    public enum Statut
     {
         Avoir,
         Vu,

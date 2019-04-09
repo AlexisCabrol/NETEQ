@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models.enums
 {
-    enum Pays
+    public enum Pays
     {
         Français,
         Allemand,

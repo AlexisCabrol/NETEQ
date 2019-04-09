@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models
 {
-    class AbstractModel : System.ComponentModel.INotifyPropertyChanged
+    public class AbstractModel : System.ComponentModel.INotifyPropertyChanged
     {
         private Dictionary<string, object> propertyValues = new Dictionary<string, object>();
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -8,31 +7,31 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models
 {
-    public class Episode : AbstractModel
+    public class MediaGenre : AbstractModel
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id
+        public int GenreId
         {
             get { return GetValue<int>(); }
             set { SetValue(value); }
         }
 
-        public string Titre
+        [ForeignKey(nameof(GenreId))]
+        public Genre Genre
         {
-            get { return GetValue<string>(); }
+            get { return GetValue<Genre>(); }
             set { SetValue(value); }
         }
 
-        public int SaisonId
+        public int MediaId
         {
             get { return GetValue<int>(); }
             set { SetValue(value); }
         }
 
-        [ForeignKey(nameof(SaisonId))]
-        public Saison Saison
+        [ForeignKey(nameof(MediaId))]
+        public Media Media
         {
-            get { return GetValue<Saison>(); }
+            get { return GetValue<Media>(); }
             set { SetValue(value); }
         }
     }

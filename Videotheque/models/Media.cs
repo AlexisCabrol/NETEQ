@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,8 +9,9 @@ using Videotheque.models.enums;
 
 namespace Videotheque.models
 {
-    class Media : AbstractModel
+    public class Media : AbstractModel
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id
         {
             get { return GetValue<int>(); }
@@ -84,6 +87,12 @@ namespace Videotheque.models
         public Statut Statut
         {
             get { return GetValue<Statut>(); }
+            set { SetValue(value); }
+        }
+
+        public byte[] Affiche
+        {
+            get { return GetValue<byte[]>(); }
             set { SetValue(value); }
         }
     }

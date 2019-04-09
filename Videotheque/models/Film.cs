@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models
 {
-    class Film : Media
+    public class Film : Media
     {
         public TimeSpan Duree
         {
