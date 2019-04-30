@@ -28,7 +28,7 @@ namespace Videotheque.models
             if(!EqualityComparer<T>.Default.Equals(currentValue,newValue))
             {
                 propertyValues[propertyName] = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(propertyName)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
