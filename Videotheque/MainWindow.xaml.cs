@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Videotheque.config;
+using Videotheque.models.viewmodels;
+using Videotheque.views;
 
 namespace Videotheque
 {
@@ -23,6 +26,10 @@ namespace Videotheque
         public MainWindow()
         {
             InitializeComponent();
+
+            var mvm = new MainViewModel();
+            mvm.Source = NavigationCache.GetPage<HomePage, HomePageViewModel>(mvm);
+            this.DataContext = mvm;
         }
     }
 }
