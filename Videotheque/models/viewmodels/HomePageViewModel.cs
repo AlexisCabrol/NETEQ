@@ -26,7 +26,18 @@ namespace Videotheque.models.viewmodels
             get {
                 return new Command(() =>
                 {
-                    SuperViewModel.Source = NavigationCache.GetPage<FilmPage, FilmPageViewModel>();
+                    SuperViewModel.Source = NavigationCache.GetPage<FilmPage, FilmPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
+        public Command Author
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<AuthorPage, AuthorPageViewModel>(SuperViewModel);
                 });
             }
         }

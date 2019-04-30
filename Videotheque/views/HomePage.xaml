@@ -9,8 +9,9 @@
       Title="HomePage">
 
     <Grid>
-        <Label Content="Home Page" HorizontalAlignment="Left" Margin="329,211,0,0" VerticalAlignment="Top" Height="40" Width="89"/>
-        <Button Command="{Binding Film}" Content="Go to film" HorizontalAlignment="Left" Margin="291,316,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Statistiques" HorizontalAlignment="Left" Margin="329,211,0,0" VerticalAlignment="Top" Height="40" Width="89"/>
+        <Button Command="{Binding Film}" Content="Voir la liste des films" HorizontalAlignment="Left" Margin="201,343,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" HorizontalAlignment="Left" Margin="444,343,0,0" VerticalAlignment="Top" Width="149"/>
 
     </Grid>
 </Page>

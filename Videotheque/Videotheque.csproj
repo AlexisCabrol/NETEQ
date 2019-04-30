@@ -166,8 +166,12 @@
     </ApplicationDefinition>
     <Compile Include="config\Command.cs" />
     <Compile Include="config\NavigationCache.cs" />
+    <Compile Include="models\viewmodels\AuthorPageViewModel.cs" />
     <Compile Include="models\viewmodels\FilmPageViewModel.cs" />
     <Compile Include="models\viewmodels\HomePageViewModel.cs" />
+    <Compile Include="views\AuthorPage.xaml.cs">
+      <DependentUpon>AuthorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\FilmPage.xaml.cs">
       <DependentUpon>FilmPage.xaml</DependentUpon>
     </Compile>
@@ -188,6 +192,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="views\AuthorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\FilmPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Videotheque.models.viewmodels
 {
-    class FilmPageViewModel : AbstractModel
+    class AuthorPageViewModel : AbstractModel
     {
-        public FilmPageViewModel(MainViewModel mvm)
+        public AuthorPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
         }
