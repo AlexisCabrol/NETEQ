@@ -10,6 +10,7 @@
 
     <Grid>
         <Label Content="Film" HorizontalAlignment="Left" Margin="197,133,0,0" VerticalAlignment="Top"/>
+        <Button Command="{Binding AddFilm}" Content="Ajouter un film" HorizontalAlignment="Left" Margin="444,343,0,0" VerticalAlignment="Top" Width="149"/>
 
     </Grid>
 </Page>
