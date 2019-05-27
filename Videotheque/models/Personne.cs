@@ -1,26 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Videotheque.models.enums;
 
 namespace Videotheque.models
 {
-    public class Personne : AbstractModel
+    public class Personne : AbstractModel, IComparable
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id
         {
             get { return GetValue<int>(); }
-            set { SetValue(value); }
-        }
-
-        public string Name
-        {
-            get { return GetValue<string>(); }
             set { SetValue(value); }
         }
 
@@ -52,6 +42,28 @@ namespace Videotheque.models
         {
             get { return GetValue<byte[]>(); }
             set { SetValue(value); }
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null)
+            {
+                return 1;
+            }
+            Personne otherPersonne = obj as Personne;
+            if (otherPersonne != null)
+            {
+                return this.GetIdentity().CompareTo(otherPersonne.GetIdentity());
+            }
+            else
+            {
+                throw new ArgumentException("Object is not a Personne");
+            }
+        }
+
+        public string GetIdentity()
+        {
+            return Nom + " " + Prenom;
         }
     }
 }

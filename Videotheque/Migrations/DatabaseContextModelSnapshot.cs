@@ -122,8 +122,6 @@ namespace Videotheque.Migrations
 
                     b.Property<int>("Civilite");
 
-                    b.Property<string>("Name");
-
                     b.Property<int>("Nationalite");
 
                     b.Property<string>("Nom");
