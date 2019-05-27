@@ -4,19 +4,19 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Videotheque.config;
+using Videotheque.models;
 
-namespace Videotheque.models.viewmodels
+namespace Videotheque.viewmodels
 {
-    class FriendPageViewModel: AbstractModel
+    class AuthorPageViewModel : AbstractModel
     {
-        public FriendPageViewModel(MainViewModel mvm)
+        public AuthorPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            this.Friends = new ObservableCollection<Personne>();
-            this.Friends.Add(new Personne() { Nom = "Cabrol", Prenom = "Alexis" });
-            this.Friends.Add(new Personne() { Nom = "Olivaux", Prenom = "Alexandra" });
-            this.Friends.Add(new Personne() { Nom = "Lamarre", Prenom = "Laurine" });
+            this.Authors = new ObservableCollection<Personne>();
+            this.Authors.Add(new Personne() { Nom = "Cabrol", Prenom = "Alexis" });
+            this.Authors.Add(new Personne() { Nom = "Olivaux", Prenom = "Alexandra" });
+            this.Authors.Add(new Personne() { Nom = "Lamarre", Prenom = "Laurine" });
         }
 
         public MainViewModel SuperViewModel
@@ -25,7 +25,7 @@ namespace Videotheque.models.viewmodels
             set { SetValue<MainViewModel>(value); }
         }
 
-        public ObservableCollection<Personne> Friends
+        public ObservableCollection<Personne> Authors
         {
             get { return GetValue<ObservableCollection<Personne>>(); }
             set { SetValue<ObservableCollection<Personne>>(value); }

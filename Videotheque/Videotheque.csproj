@@ -171,17 +171,23 @@
       <DependentUpon>20190527202112_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
-    <Compile Include="models\viewmodels\AddAuthorPageViewModel.cs" />
-    <Compile Include="models\viewmodels\AddFilmPageViewModel.cs" />
-    <Compile Include="models\viewmodels\AuthorPageViewModel.cs" />
-    <Compile Include="models\viewmodels\FilmPageViewModel.cs" />
-    <Compile Include="models\viewmodels\FriendPageViewModel.cs" />
-    <Compile Include="models\viewmodels\HomePageViewModel.cs" />
+    <Compile Include="utils\ComboboxUtils.cs" />
+    <Compile Include="utils\EnumUtils.cs" />
+    <Compile Include="viewmodels\AddAuthorPageViewModel.cs" />
+    <Compile Include="viewmodels\AddFilmPageViewModel.cs" />
+    <Compile Include="viewmodels\AddFriendPageViewModel.cs" />
+    <Compile Include="viewmodels\AuthorPageViewModel.cs" />
+    <Compile Include="viewmodels\FilmPageViewModel.cs" />
+    <Compile Include="viewmodels\FriendPageViewModel.cs" />
+    <Compile Include="viewmodels\HomePageViewModel.cs" />
     <Compile Include="views\AddAuthorPage.xaml.cs">
       <DependentUpon>AddAuthorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\AddFilmPage.xaml.cs">
       <DependentUpon>AddFilmPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\AddFriendPage.xaml.cs">
+      <DependentUpon>AddFriendPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\AuthorPage.xaml.cs">
       <DependentUpon>AuthorPage.xaml</DependentUpon>
@@ -217,6 +223,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="views\AddFriendPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="views\AuthorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -248,7 +258,7 @@
     <Compile Include="models\MediaPersonne.cs" />
     <Compile Include="models\Personne.cs" />
     <Compile Include="models\Saison.cs" />
-    <Compile Include="models\viewmodels\MainViewModel.cs" />
+    <Compile Include="viewmodels\MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -277,9 +287,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

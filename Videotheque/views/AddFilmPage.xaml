@@ -8,18 +8,16 @@
       Title="AddFilmPage" Height="498.214">
 
     <Grid>
-        <Button Content="Ajouter le film" HorizontalAlignment="Left" Margin="302,443,0,0" VerticalAlignment="Top" Width="220"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="147,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" Text="{Binding Film.Titre}"/>
+        <Button Command="{Binding AddFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="302,443,0,0" VerticalAlignment="Top" Width="220"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="147,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" Text="{Binding Titre}"/>
         <TextBlock HorizontalAlignment="Left" Margin="65,84,0,0" TextWrapping="Wrap" Text="Titre" VerticalAlignment="Top"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="65,129,0,0" TextWrapping="Wrap" Text="Synopsis" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="58" Margin="147,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" Text="{Binding Film.Synopsis}"/>
+        <TextBox HorizontalAlignment="Left" Height="58" Margin="147,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" Text="{Binding Synopsis}"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="65,211,0,0" TextWrapping="Wrap" Text="Commentaire" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="65" Margin="147,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" RenderTransformOrigin="0.5,0.5" />
+        <TextBox Text="{Binding Commentaire}" HorizontalAlignment="Left" Height="65" Margin="147,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" RenderTransformOrigin="0.5,0.5" />
 
-
-        <TextBlock HorizontalAlignment="Left" Height="0" Margin="587,107,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="20"/>
         <CheckBox Content="Audio description" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="Support physique" HorizontalAlignment="Left" Margin="357,306,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="Support numérique" HorizontalAlignment="Left" Margin="574,306,0,0" VerticalAlignment="Top"/>
@@ -34,12 +32,12 @@
         <ComboBox HorizontalAlignment="Left" Margin="627,341,0,0" VerticalAlignment="Top" Width="114"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="65,389,0,0" TextWrapping="Wrap" Text="Age min." VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="147,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
+        <TextBox Text="{Binding AgeMin}" HorizontalAlignment="Left" Height="25" Margin="147,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="302,389,0,0" TextWrapping="Wrap" Text="Durée" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="397,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
+        <TextBox Text="{Binding Duree}" HorizontalAlignment="Left" Height="25" Margin="397,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="587,392,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="627,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
+        <TextBox Text="{Binding Note}" HorizontalAlignment="Left" Height="25" Margin="627,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
     </Grid>
 </Page>

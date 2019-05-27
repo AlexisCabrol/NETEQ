@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Videotheque.config;
-using Videotheque.models.viewmodels;
+using Videotheque.viewmodels;
 using Videotheque.views;
 
 namespace Videotheque
