@@ -13,7 +13,7 @@
             <Button Command="{Binding UpdateFriend}" Content="Modifier un ami" HorizontalAlignment="Left" Margin="577,212,0,0" VerticalAlignment="Top" Width="149"/>
             <Button Command="{Binding DeleteFriend}" Content="Supprimer un ami" HorizontalAlignment="Left" Margin="577,290,0,0" VerticalAlignment="Top" Width="149"/>
 
-            <ListBox Name="ListFriend" ItemsSource="{Binding Friend}" HorizontalAlignment="Left" Height="342" Margin="23,79,0,0" VerticalAlignment="Top" Width="472">
+            <ListBox Name="ListFriend" ItemsSource="{Binding Friends}" HorizontalAlignment="Left" Height="342" Margin="23,79,0,0" VerticalAlignment="Top" Width="472">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
