@@ -37,18 +37,8 @@ namespace Videotheque.viewmodels
         public AddFriendPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            ListCivilite = new List<ComboboxUtils>()
-        {
-            new ComboboxUtils() { ValueEnum = Civilite.Monsieur, ValueString = "Monsieur" },
-            new ComboboxUtils() { ValueEnum = Civilite.Madame, ValueString = "Madame" },
-            new ComboboxUtils() { ValueEnum = Civilite.Mademoiselle, ValueString = "Mademoiselle" }
-        };
-            ListNat = new List<ComboboxUtils>()
-        {
-            new ComboboxUtils() { ValueEnum = Pays.Français, ValueString = "Français" },
-            new ComboboxUtils() { ValueEnum = Pays.Allemand, ValueString = "Allemand" },
-            new ComboboxUtils() { ValueEnum = Pays.Anglais, ValueString = "Anglais" }
-        };
+            ListCivilite = ComboboxUtils.init(new Civilite());
+            ListNat = ComboboxUtils.init(new Pays());
         }
 
         public Command ValidateFriend
