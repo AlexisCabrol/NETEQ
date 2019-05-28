@@ -9,6 +9,10 @@ namespace Videotheque.services.personne
 {
     interface PersonneService
     {
+        // Service for friend management
         Task AddFriend(Personne p);
+
+       
+       
     }
 }

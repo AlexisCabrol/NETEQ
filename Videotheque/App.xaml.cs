@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Videotheque.databaseAccess;
+using Videotheque.utils;
 
 namespace Videotheque
 {
@@ -27,6 +28,12 @@ namespace Videotheque
             }
 
             var context = await DatabaseContext.GetCurrent();
+            await context.Film.AddRangeAsync(GenerateDataUtils.InitFilms());
+            await context.Personne.AddRangeAsync(GenerateDataUtils.InitPersonnes());
+            await context.Genre.AddRangeAsync(GenerateDataUtils.InitGenre());
+            await context.MediaGenre.AddRangeAsync(GenerateDataUtils.InitMediaGenre());
+            await context.MediaPersonne.AddRangeAsync(GenerateDataUtils.InitMediaPersonne());
+            await context.SaveChangesAsync();
         }
     }
 }

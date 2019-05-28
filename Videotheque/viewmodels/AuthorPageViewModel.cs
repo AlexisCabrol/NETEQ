@@ -5,18 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Videotheque.models;
+using Videotheque.services.personne;
+using Videotheque.services.personne.impl;
 
 namespace Videotheque.viewmodels
 {
     class AuthorPageViewModel : AbstractModel
     {
+        private readonly PersonneService personneService = new PersonneServiceImpl();
+
         public AuthorPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            this.Authors = new ObservableCollection<Personne>();
-            this.Authors.Add(new Personne() { Nom = "Cabrol", Prenom = "Alexis" });
-            this.Authors.Add(new Personne() { Nom = "Olivaux", Prenom = "Alexandra" });
-            this.Authors.Add(new Personne() { Nom = "Lamarre", Prenom = "Laurine" });
+        }
+
+        public async void CallService()
+        {
         }
 
         public MainViewModel SuperViewModel

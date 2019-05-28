@@ -15,6 +15,7 @@ namespace Videotheque.viewmodels
     class FilmPageViewModel : AbstractModel
     {
         private readonly FilmService filmService = new FilmServiceImpl();
+
         public FilmPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
