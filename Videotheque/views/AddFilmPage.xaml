@@ -8,7 +8,7 @@
       Title="AddFilmPage" Height="498.214">
 
     <Grid>
-        <Button Command="{Binding AddFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="302,443,0,0" VerticalAlignment="Top" Width="220"/>
+        <Button Command="{Binding ValidateFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="302,443,0,0" VerticalAlignment="Top" Width="220"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="147,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" Text="{Binding Titre}"/>
         <TextBlock HorizontalAlignment="Left" Margin="65,84,0,0" TextWrapping="Wrap" Text="Titre" VerticalAlignment="Top"/>
 
@@ -18,18 +18,18 @@
         <TextBlock HorizontalAlignment="Left" Margin="65,211,0,0" TextWrapping="Wrap" Text="Commentaire" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Commentaire}" HorizontalAlignment="Left" Height="65" Margin="147,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" RenderTransformOrigin="0.5,0.5" />
 
-        <CheckBox Content="Audio description" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Support physique" HorizontalAlignment="Left" Margin="357,306,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Support numérique" HorizontalAlignment="Left" Margin="574,306,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Audio description" HorizontalAlignment="Left" Margin="147,306,0,0" VerticalAlignment="Top" IsChecked="{Binding AudioDescription}"/>
+        <CheckBox Content="Support physique" HorizontalAlignment="Left" Margin="357,306,0,0" VerticalAlignment="Top" IsChecked="{Binding SupportPhysique}"/>
+        <CheckBox Content="Support numérique" HorizontalAlignment="Left" Margin="574,306,0,0" VerticalAlignment="Top" IsChecked="{Binding SupportNumerique}"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="65,341,0,0" TextWrapping="Wrap" Text="Langue VO" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="147,341,0,0" VerticalAlignment="Top" Width="114"/>
+        <ComboBox HorizontalAlignment="Left" Margin="147,341,0,0" VerticalAlignment="Top" Width="114" ItemsSource="{Binding ListVO}" SelectedValue="{Binding VOEnum}" DisplayMemberPath="ValueString" SelectedValuePath="ValueEnum"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="302,341,0,0" TextWrapping="Wrap" Text="Langue média" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="397,341,0,0" VerticalAlignment="Top" Width="114"/>
+        <ComboBox HorizontalAlignment="Left" Margin="397,341,0,0" VerticalAlignment="Top" Width="114" ItemsSource="{Binding ListME}" SelectedValue="{Binding MEEnum}" DisplayMemberPath="ValueString" SelectedValuePath="ValueEnum"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="587,341,0,0" TextWrapping="Wrap" Text="Statut" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="627,341,0,0" VerticalAlignment="Top" Width="114"/>
+        <ComboBox HorizontalAlignment="Left" Margin="627,341,0,0" VerticalAlignment="Top" Width="114" ItemsSource="{Binding ListStatut}" SelectedValue="{Binding StatutEnum}" DisplayMemberPath="ValueString" SelectedValuePath="ValueEnum"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="65,389,0,0" TextWrapping="Wrap" Text="Age min." VerticalAlignment="Top"/>
         <TextBox Text="{Binding AgeMin}" HorizontalAlignment="Left" Height="25" Margin="147,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>

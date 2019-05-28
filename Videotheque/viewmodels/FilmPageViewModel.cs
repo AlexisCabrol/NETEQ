@@ -7,18 +7,22 @@ using Videotheque.config;
 using Videotheque.views;
 using System.Collections.ObjectModel;
 using Videotheque.models;
+using Videotheque.services.film.impl;
+using Videotheque.services.film;
 
 namespace Videotheque.viewmodels
 {
     class FilmPageViewModel : AbstractModel
     {
+        private readonly FilmService filmService = new FilmServiceImpl();
         public FilmPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            this.Films = new ObservableCollection<Film>();
-            this.Films.Add(new Film() { Titre = "Un film de test 1" });
-            this.Films.Add(new Film() { Titre = "TEST" });
-            this.Films.Add(new Film() { Titre = "Un test 2" });
+        }
+
+        public async void CallService()
+        {
+            this.Films = await filmService.selectAllFilmAsync();
         }
 
         public MainViewModel SuperViewModel
@@ -27,10 +31,16 @@ namespace Videotheque.viewmodels
             set { SetValue<MainViewModel>(value); }
         }
 
-        public ObservableCollection<Film> Films
+        public List<Film> Films
         {
-            get { return GetValue<ObservableCollection<Film>>();  }
-            set { SetValue<ObservableCollection<Film>>(value);  }
+            get { return GetValue<List<Film>>();  }
+            set { SetValue<List<Film>>(value);  }
+        }
+
+        public Film CurrentFilm
+        {
+            get { return GetValue<Film>(); }
+            set { SetValue<Film>(value);  }
         }
 
         public Command UpdateFilm
@@ -45,16 +55,10 @@ namespace Videotheque.viewmodels
             }
         }
 
-        public Command DeleteFilm
+        public async void DeleteFilm()
         {
-            // TODO
-            get
-            {
-                return new Command(() =>
-                {
-                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel);
-                });
-            }
+            await filmService.DeleteFilm(CurrentFilm);
+            CallService();
         }
 
         public Command AddFilm

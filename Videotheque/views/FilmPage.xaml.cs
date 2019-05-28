@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using Videotheque.models;
+using Videotheque.viewmodels;
 
 namespace Videotheque.views
 {
@@ -11,6 +13,7 @@ namespace Videotheque.views
     /// </summary>
     public partial class FilmPage : Page
     {
+        private FilmPageViewModel ValueModel;
         public FilmPage()
         {
             InitializeComponent();
@@ -22,10 +25,16 @@ namespace Videotheque.views
             get; set;
         }
 
+        private void OnPageLoaded(object sender, RoutedEventArgs e)
+        {
+            this.ValueModel = DataContext as FilmPageViewModel;
+            ValueModel.CallService();
+        }
+
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string Search = SearchText.Text.Trim();
-            firstCall();
+            FirstCall();
 
             if (!String.IsNullOrEmpty(Search))
             {
@@ -39,7 +48,7 @@ namespace Videotheque.views
 
         private void TrierFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            firstCall();
+            FirstCall();
 
             List<Film> sortedList = ListFilmStart;
             switch (FilterBox.SelectedIndex)
@@ -61,12 +70,36 @@ namespace Videotheque.views
             }
         }
 
-        private void firstCall()
+        private void FirstCall()
         {
             if (!ListFilmStart.Any())
             {
                 this.ListFilmStart = ListFilm.Items.OfType<Film>().ToList();
             }
+        }
+
+        private void ListFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListFilm.SelectedItem != null)
+            {
+                UpdateEnabledBtn(true);
+            }
+            else
+            {
+                UpdateEnabledBtn(false);
+            }
+        }
+
+        private void UpdateEnabledBtn(bool visible)
+        {
+            ConsultFilmBtn.IsEnabled = visible;
+            UpdateFilmBtn.IsEnabled = visible;
+            DeleteFilmBtn.IsEnabled = visible;
+        }
+
+        private void DeleteFilmBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ValueModel.DeleteFilm();
         }
     }
 }

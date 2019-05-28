@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Videotheque.config;
 using Videotheque.models;
 using Videotheque.models.enums;
+using Videotheque.services.personne;
+using Videotheque.services.personne.impl;
 using Videotheque.utils;
 using Videotheque.views;
 
@@ -12,10 +11,12 @@ namespace Videotheque.viewmodels
 {
     class AddFriendPageViewModel : AbstractModel
     {
+        private readonly PersonneService personneService = new PersonneServiceImpl();
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public List<ComboboxUtils> ListCivilite { get; set; }
         public List<ComboboxUtils> ListNat { get; set; }
+
         public MainViewModel SuperViewModel
         {
             get { return GetValue<MainViewModel>(); }
@@ -47,23 +48,16 @@ namespace Videotheque.viewmodels
             {
                 return new Command(async () =>
                 {
-                    await saveFriendAsync();
+                    await personneService.AddFriend(new Personne()
+                    {
+                        Nom = this.Nom,
+                        Prenom = this.Prenom,
+                        Civilite = this.CivEnum,
+                        Nationalite = this.NatEnum
+                    });
                     SuperViewModel.Source = NavigationCache.GetPage<FriendPage, FriendPageViewModel>(SuperViewModel);
                 });
             }
-        }
-
-        private async Task saveFriendAsync()
-        {
-            var context = await databaseAccess.DatabaseContext.GetCurrent();
-            context.Personne.Add(new Personne()
-            {
-                Nom = this.Nom,
-                Prenom = this.Prenom,
-                Civilite = this.CivEnum,
-                Nationalite = this.NatEnum
-            });
-            await context.SaveChangesAsync();
         }
     }
 }

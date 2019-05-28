@@ -171,6 +171,10 @@
       <DependentUpon>20190527202112_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
+    <Compile Include="services\film\FilmService.cs" />
+    <Compile Include="services\film\impl\FilmServiceImpl.cs" />
+    <Compile Include="services\personne\impl\PersonneServiceImpl.cs" />
+    <Compile Include="services\personne\PersonneService.cs" />
     <Compile Include="utils\ComboboxUtils.cs" />
     <Compile Include="utils\EnumUtils.cs" />
     <Compile Include="viewmodels\AddAuthorPageViewModel.cs" />
