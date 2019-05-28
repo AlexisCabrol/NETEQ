@@ -8,7 +8,7 @@
         Title="MainWindow" 
         WindowState="Maximized">
     <Grid>
-        <Frame Content="{Binding Source}"/>
+        <Frame NavigationUIVisibility="Hidden" Content="{Binding Source}"/>
 
     </Grid>
 </Window>

@@ -16,7 +16,7 @@ namespace Videotheque.services.film.impl
             await context.SaveChangesAsync();
         }
 
-        public async Task<List<Film>> selectAllFilmAsync()
+        public async Task<List<Film>> SelectAllFilmAsync()
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             return context.Film.ToList<Film>();
@@ -27,6 +27,12 @@ namespace Videotheque.services.film.impl
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             context.Film.Remove(film);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<Film> SelectOneFilm(Film film)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            return context.Film.Where(f => f.Id == film.Id).First();
         }
     }
 }

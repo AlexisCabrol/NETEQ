@@ -9,8 +9,9 @@ namespace Videotheque.services.film
 {
     interface FilmService
     {
-        Task<List<Film>> selectAllFilmAsync();
+        Task<List<Film>> SelectAllFilmAsync();
         Task AddFilm(Film film);
         Task DeleteFilm(Film film);
+        Task<Film> SelectOneFilm(Film film);
     }
 }

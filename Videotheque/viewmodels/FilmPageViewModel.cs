@@ -22,7 +22,7 @@ namespace Videotheque.viewmodels
 
         public async void CallService()
         {
-            this.Films = await filmService.selectAllFilmAsync();
+            this.Films = await filmService.SelectAllFilmAsync();
         }
 
         public MainViewModel SuperViewModel
@@ -59,6 +59,17 @@ namespace Videotheque.viewmodels
         {
             await filmService.DeleteFilm(CurrentFilm);
             CallService();
+        }
+
+        public Command ConsultFilm
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<ConsultFilmPage, ConsultFilmPageViewModel> (SuperViewModel, CurrentFilm);
+                });
+            }
         }
 
         public Command AddFilm
