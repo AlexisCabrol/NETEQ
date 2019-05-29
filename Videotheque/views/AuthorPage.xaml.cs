@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Videotheque.models;
+using Videotheque.viewmodels;
 
 namespace Videotheque.views
 {
@@ -21,61 +13,77 @@ namespace Videotheque.views
     /// </summary>
     public partial class AuthorPage : Page
     {
+        private AuthorPageViewModel ViewModel;
         public AuthorPage()
         {
             InitializeComponent();
-            this.ListAuthorStart = new List<Personne>();
         }
 
-        private List<Personne> ListAuthorStart
+        private void OnPageLoaded(object sender, RoutedEventArgs e)
         {
-            get; set;
+            this.ViewModel = DataContext as AuthorPageViewModel;
+            ViewModel.CallService();
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string Search = SearchText.Text.Trim();
-            firstCall();
 
             if (!String.IsNullOrEmpty(Search))
             {
-                ListAuthors.ItemsSource = ListAuthorStart.FindAll(author => author.GetIdentity().ToLower().Contains(Search.ToLower()));
+                ViewModel.SearchByText(Search);
             }
             else
             {
-                ListAuthors.ItemsSource = ListAuthorStart;
+                ViewModel.CallService();
             }
         }
 
         private void TrierFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            firstCall();
+            UpdateFilterList(FilterBox.SelectedIndex);
+        }
 
-            List<Personne> sortedList = ListAuthorStart;
-            switch (FilterBox.SelectedIndex)
+        private void UpdateFilterList(int statut)
+        {
+            switch (statut)
             {
                 case 0:
-                    sortedList.Sort();
-                    ListAuthors.ItemsSource = sortedList;
-                    ListAuthors.Items.Refresh();
+                    ViewModel.Authors = new ObservableCollection<Personne>(
+                        ViewModel.Authors.OrderBy(author => author.GetIdentity()).ToList());
                     break;
                 case 1:
-                    sortedList.Sort();
-                    sortedList.Reverse();
-                    ListAuthors.ItemsSource = sortedList;
-                    ListAuthors.Items.Refresh();
+                    ViewModel.Authors = new ObservableCollection<Personne>(
+                        ViewModel.Authors.OrderByDescending(author => author.GetIdentity()).ToList());
                     break;
                 default:
-                    ListAuthors.ItemsSource = ListAuthorStart;
+                    ViewModel.CallService();
                     break;
             }
         }
 
-        private void firstCall()
+        private void UpdateEnabledBtn(bool visible)
         {
-            if (!ListAuthorStart.Any())
+            UpdateAuthorBtn.IsEnabled = visible;
+            DeleteAuthorBtn.IsEnabled = visible;
+        }
+
+        private void DeleteAuthorBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DeleteAuthor();
+            UpdateFilterList(FilterBox.SelectedIndex);
+            SearchText.Text = "";
+        }
+
+        private void ListAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListAuthors.SelectedItem != null)
             {
-                this.ListAuthorStart = ListAuthors.Items.OfType<Personne>().ToList();
+                UpdateEnabledBtn(true);
+            }
+            else
+            {
+                UpdateEnabledBtn(false);
             }
         }
     }

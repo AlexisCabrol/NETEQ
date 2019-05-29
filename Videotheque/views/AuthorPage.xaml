@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="OnPageLoaded"
       Title="AuthorPage">
 
     <Page.Resources>
@@ -19,10 +20,10 @@
 
     <Grid>
         <Button Command="{Binding AddAuthor}" Content="Ajouter un auteur" HorizontalAlignment="Left" Margin="577,138,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Command="{Binding UpdateAuthor}" Content="Modifier un auteur" HorizontalAlignment="Left" Margin="577,212,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Command="{Binding DeleteAuthor}" Content="Supprimer un auteur" HorizontalAlignment="Left" Margin="577,290,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button Name="UpdateAuthorBtn" IsEnabled="False" Content="Modifier un auteur" HorizontalAlignment="Left" Margin="577,212,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button Name="DeleteAuthorBtn" IsEnabled="False" Content="Supprimer un auteur" HorizontalAlignment="Left" Margin="577,290,0,0" VerticalAlignment="Top" Width="149" Click="DeleteAuthorBtn_Click"/>
 
-        <ListBox Name="ListAuthors" ItemsSource="{Binding Authors}" HorizontalAlignment="Left" Height="342" Margin="23,79,0,0" VerticalAlignment="Top" Width="472">
+        <ListBox Name="ListAuthors" SelectedValue="{Binding CurrentAuthor}" ItemsSource="{Binding Authors}" HorizontalAlignment="Left" Height="342" Margin="23,79,0,0" VerticalAlignment="Top" Width="472" SelectionChanged="ListAuthors_SelectionChanged">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Videotheque.models;
 using Videotheque.services.personne;
@@ -21,6 +18,18 @@ namespace Videotheque.viewmodels
 
         public async void CallService()
         {
+            this.Authors = await personneService.SelectAllAuthor();
+        }
+
+        public async void DeleteAuthor()
+        {
+            await personneService.DeleteAuthor(CurrentAuthor);
+            CallService();
+        }
+
+        public async void SearchByText(string text)
+        {
+            Authors = await personneService.SelectAuthorFilter(text);
         }
 
         public MainViewModel SuperViewModel
@@ -33,6 +42,12 @@ namespace Videotheque.viewmodels
         {
             get { return GetValue<ObservableCollection<Personne>>(); }
             set { SetValue<ObservableCollection<Personne>>(value); }
+        }
+
+        public Personne CurrentAuthor
+        {
+            get { return GetValue<Personne>(); }
+            set { SetValue<Personne>(value); }
         }
     }
 }

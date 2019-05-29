@@ -26,16 +26,21 @@ namespace Videotheque.viewmodels
             this.Films = await filmService.SelectAllFilmAsync();
         }
 
+        public async void SearchByText(string text)
+        {
+            Films = await filmService.SelectFilmFilter(text);
+        }
+
         public MainViewModel SuperViewModel
         {
             get { return GetValue<MainViewModel>(); }
             set { SetValue<MainViewModel>(value); }
         }
 
-        public List<Film> Films
+        public ObservableCollection<Film> Films
         {
-            get { return GetValue<List<Film>>();  }
-            set { SetValue<List<Film>>(value);  }
+            get { return GetValue<ObservableCollection<Film>>();  }
+            set { SetValue<ObservableCollection<Film>>(value);  }
         }
 
         public Film CurrentFilm

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,10 @@ namespace Videotheque.services.film
 {
     interface FilmService
     {
-        Task<List<Film>> SelectAllFilmAsync();
+        Task<ObservableCollection<Film>> SelectAllFilmAsync();
         Task AddFilm(Film film);
         Task DeleteFilm(Film film);
         Task<Film> SelectOneFilm(Film film);
+        Task<ObservableCollection<Film>> SelectFilmFilter(string text);
     }
 }

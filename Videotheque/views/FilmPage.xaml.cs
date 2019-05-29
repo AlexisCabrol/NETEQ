@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,74 +13,58 @@ namespace Videotheque.views
     /// </summary>
     public partial class FilmPage : Page
     {
-        private FilmPageViewModel ValueModel;
+        private FilmPageViewModel ViewModel;
         public FilmPage()
         {
             InitializeComponent();
-            this.ListFilmStart = new List<Film>();
-        }
-
-        private List<Film> ListFilmStart
-        {
-            get; set;
         }
 
         private void OnPageLoaded(object sender, RoutedEventArgs e)
         {
-            this.ValueModel = DataContext as FilmPageViewModel;
-            ValueModel.CallService();
+            this.ViewModel = DataContext as FilmPageViewModel;
+            ViewModel.CallService();
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string Search = SearchText.Text.Trim();
-            FirstCall();
 
             if (!String.IsNullOrEmpty(Search))
             {
-                ListFilm.ItemsSource = ListFilmStart.FindAll(film => film.Titre.ToLower().Contains(Search.ToLower()));
+                ViewModel.SearchByText(Search);
             }
             else
             {
-                ListFilm.ItemsSource = ListFilmStart;
+                ViewModel.CallService();
             }
         }
 
         private void TrierFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            FirstCall();
-
-            List<Film> sortedList = ListFilmStart;
-            switch (FilterBox.SelectedIndex)
-            {
-                case 0:
-                    sortedList.Sort();
-                    ListFilm.ItemsSource = sortedList;
-                    ListFilm.Items.Refresh();
-                    break;
-                case 1:
-                    sortedList.Sort();
-                    sortedList.Reverse();
-                    ListFilm.ItemsSource = sortedList;
-                    ListFilm.Items.Refresh();
-                    break;
-                default:
-                    ListFilm.ItemsSource = ListFilmStart;
-                    break;
-            }
+            UpdateFilterList(FilterBox.SelectedIndex);
         }
 
-        private void FirstCall()
+        private void UpdateFilterList(int statut)
         {
-            if (!ListFilmStart.Any())
+            switch (statut)
             {
-                this.ListFilmStart = ListFilm.Items.OfType<Film>().ToList();
+                case 0:
+                    ViewModel.Films = new ObservableCollection<Film>(
+                        ViewModel.Films.OrderBy(film => film.Titre).ToList());
+                    break;
+                case 1:
+                    ViewModel.Films = new ObservableCollection<Film>(
+                        ViewModel.Films.OrderByDescending(film => film.Titre).ToList());
+                    break;
+                default:
+                    ViewModel.CallService();
+                    break;
             }
         }
 
         private void ListFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ListFilm.SelectedItem != null)
+            if (ListFilm.SelectedItem != null)
             {
                 UpdateEnabledBtn(true);
             }
@@ -99,7 +83,9 @@ namespace Videotheque.views
 
         private void DeleteFilmBtn_Click(object sender, RoutedEventArgs e)
         {
-            ValueModel.DeleteFilm();
+            ViewModel.DeleteFilm();
+            UpdateFilterList(FilterBox.SelectedIndex);
+            SearchText.Text = "";
         }
     }
 }

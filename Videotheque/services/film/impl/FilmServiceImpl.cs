@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,10 @@ namespace Videotheque.services.film.impl
             await context.SaveChangesAsync();
         }
 
-        public async Task<List<Film>> SelectAllFilmAsync()
+        public async Task<ObservableCollection<Film>> SelectAllFilmAsync()
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
-            return context.Film.ToList<Film>();
+            return new ObservableCollection<Film>( context.Film.ToList<Film>() );
         }
 
         public async Task DeleteFilm(Film film)
@@ -33,6 +34,13 @@ namespace Videotheque.services.film.impl
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             return context.Film.Where(f => f.Id == film.Id).First();
+        }
+
+        public async Task<ObservableCollection<Film>> SelectFilmFilter(string text)
+        {
+            ObservableCollection<Film> list = await SelectAllFilmAsync();
+            return new ObservableCollection<Film>(
+                list.Where(film => film.Titre.ToLower().Contains(text.ToLower())).ToList());
         }
     }
 }
