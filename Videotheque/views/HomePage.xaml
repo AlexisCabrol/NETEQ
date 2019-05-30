@@ -2,17 +2,33 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage">
+      Title="HomePage"
+      Background="#656565"
+      Loaded="Page_Loaded">
 
     <Grid>
-        <Label Content="Statistiques" HorizontalAlignment="Left" Margin="329,211,0,0" VerticalAlignment="Top" Height="40" Width="89"/>
-        <Button Command="{Binding Film}" Content="Voir la liste des films" HorizontalAlignment="Left" Margin="106,343,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" HorizontalAlignment="Left" Margin="329,343,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Command="{Binding Friend}" Content="Liste d'amis" HorizontalAlignment="Left" Margin="562,343,0,0" VerticalAlignment="Top" Width="149"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="104*"/>
+            <RowDefinition Height="121*"/>
+        </Grid.RowDefinitions>
+        <lvc:PieChart Name="Chart" Series="{Binding MediaPerGenre}" 
+                      LegendLocation="Right" InnerRadius="100" Margin="72,50,0,154.6" Width="350" Grid.RowSpan="2" HorizontalAlignment="Left">
+            <lvc:PieChart.ChartLegend>
+                <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+            </lvc:PieChart.ChartLegend>
+        </lvc:PieChart>
 
+        <Button Command="{Binding Film}" Content="Voir la liste des films" Margin="104,0,546,43.6" Width="150" Height="19" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" Margin="329,0,321,43.6" Width="150" Height="19" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Button Command="{Binding Friend}" Content="Liste d'amis" Margin="562,0,88,43.6" Width="150" Height="19" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <TextBlock Foreground="#F3F3F3" Margin="10,0,638,-0.4" TextWrapping="Wrap" Text="© Copyright Cabrol Alexis" Height="26" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Rectangle Fill="Black" Height="65" Stroke="Black" VerticalAlignment="Top"/>
+        <TextBlock Foreground="#D10000" HorizontalAlignment="Center" TextWrapping="Wrap" Text="NetTeq" VerticalAlignment="Top" Margin="381,20,358,0" FontSize="18" Width="61" FontWeight="Bold"/>
+        <TextBlock Foreground="#F3F3F3" Margin="135,87,0,134.6" Grid.Row="1" TextWrapping="Wrap" Text="Nombre de films par genre" FontStyle="Italic" HorizontalAlignment="Left" Width="155" Height="20"/>
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Videotheque.viewmodels;
 
 namespace Videotheque.views
 {
@@ -20,9 +21,16 @@ namespace Videotheque.views
     /// </summary>
     public partial class HomePage : Page
     {
+        private HomePageViewModel ViewModel;
         public HomePage()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel = DataContext as HomePageViewModel;
+            ViewModel.BuildStats();
         }
     }
 }
