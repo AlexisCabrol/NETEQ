@@ -1,0 +1,38 @@
+﻿<Page x:Class="Videotheque.views.ConsultAuthorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Videotheque.views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConsultAuthorPage"
+      Loaded="OnPageLoaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="262*"/>
+            <RowDefinition Height="187*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="357*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Right" Margin="0,55,692,0" TextWrapping="Wrap" Text="{Binding Author.Prenom}" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="0,42,515,0" TextWrapping="Wrap" Text="{Binding Author.Nom}" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0.6,116,0,0" TextWrapping="Wrap" Text="{Binding Author.Nationalite}" VerticalAlignment="Top"/>
+        <ListBox Name="ListMediaPersonne" ItemsSource="{Binding AuthorWithHisFilms}" SelectedValue="{Binding CurrentMediaPersonne}" Height="100" Margin="0,210,65,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="680" Grid.ColumnSpan="2" Grid.RowSpan="2" SelectionChanged="ListMediaPersonne_SelectionChanged">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Media.Titre}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer" HorizontalAlignment="Left" Margin="55,140.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="Button_Click"/>
+        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Left" Margin="92.6,140.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+    </Grid>
+</Page>

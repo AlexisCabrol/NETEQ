@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Videotheque.config;
 using Videotheque.models;
 using Videotheque.services.personne;
 using Videotheque.services.personne.impl;
+using Videotheque.views;
 
 namespace Videotheque.viewmodels
 {
@@ -19,12 +21,6 @@ namespace Videotheque.viewmodels
         public async void CallService()
         {
             this.Authors = await personneService.SelectAllAuthor();
-        }
-
-        public async void DeleteAuthor()
-        {
-            await personneService.DeleteAuthor(CurrentAuthor);
-            CallService();
         }
 
         public async void SearchByText(string text)
@@ -48,6 +44,39 @@ namespace Videotheque.viewmodels
         {
             get { return GetValue<Personne>(); }
             set { SetValue<Personne>(value); }
+        }
+
+        public Command ConsultAuthor
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<ConsultAuthorPage, ConsultAuthorPageViewModel>(SuperViewModel, CurrentAuthor);
+                });
+            }
+        }
+
+        public Command AddAuthor
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<AddAuthorPage, AddAuthorPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
+        public Command GoBack
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<HomePage, HomePageViewModel>(SuperViewModel);
+                });
+            }
         }
     }
 }

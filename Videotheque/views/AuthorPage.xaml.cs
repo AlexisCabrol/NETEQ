@@ -62,28 +62,15 @@ namespace Videotheque.views
             }
         }
 
-        private void UpdateEnabledBtn(bool visible)
-        {
-            UpdateAuthorBtn.IsEnabled = visible;
-            DeleteAuthorBtn.IsEnabled = visible;
-        }
-
-        private void DeleteAuthorBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.DeleteAuthor();
-            UpdateFilterList(FilterBox.SelectedIndex);
-            SearchText.Text = "";
-        }
-
         private void ListAuthors_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ListAuthors.SelectedItem != null)
             {
-                UpdateEnabledBtn(true);
+                ConsultAuthorBtn.IsEnabled = true;
             }
             else
             {
-                UpdateEnabledBtn(false);
+                ConsultAuthorBtn.IsEnabled = false;
             }
         }
     }

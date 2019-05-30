@@ -16,6 +16,7 @@ namespace Videotheque.services.personne
         // Service for author management
         Task<ObservableCollection<Personne>> SelectAllAuthor();
         Task<ObservableCollection<Personne>> SelectAuthorFilter(string text);
-        Task DeleteAuthor(Personne p);
+        Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneAuthor(int id);
+        Task DeleteMediaPersonne(MediaPersonne p);
     }
 }

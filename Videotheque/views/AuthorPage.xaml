@@ -20,8 +20,8 @@
 
     <Grid>
         <Button Command="{Binding AddAuthor}" Content="Ajouter un auteur" HorizontalAlignment="Left" Margin="577,138,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Name="UpdateAuthorBtn" IsEnabled="False" Content="Modifier un auteur" HorizontalAlignment="Left" Margin="577,212,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Name="DeleteAuthorBtn" IsEnabled="False" Content="Supprimer un auteur" HorizontalAlignment="Left" Margin="577,290,0,0" VerticalAlignment="Top" Width="149" Click="DeleteAuthorBtn_Click"/>
+        <Button Command="{Binding ConsultAuthor}" Name="ConsultAuthorBtn" IsEnabled="False" Content="Consulter" HorizontalAlignment="Left" Margin="577,212,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Left" Margin="577,358,0,0" VerticalAlignment="Top" Width="149"/>
 
         <ListBox Name="ListAuthors" SelectedValue="{Binding CurrentAuthor}" ItemsSource="{Binding Authors}" HorizontalAlignment="Left" Height="342" Margin="23,79,0,0" VerticalAlignment="Top" Width="472" SelectionChanged="ListAuthors_SelectionChanged">
             <ItemsControl.ItemTemplate>

@@ -182,6 +182,7 @@
     <Compile Include="viewmodels\AddFilmPageViewModel.cs" />
     <Compile Include="viewmodels\AddFriendPageViewModel.cs" />
     <Compile Include="viewmodels\AuthorPageViewModel.cs" />
+    <Compile Include="viewmodels\ConsultAuthorPageViewModel.cs" />
     <Compile Include="viewmodels\ConsultFilmPageViewModel.cs" />
     <Compile Include="viewmodels\FilmPageViewModel.cs" />
     <Compile Include="viewmodels\FriendPageViewModel.cs" />
@@ -197,6 +198,9 @@
     </Compile>
     <Compile Include="views\AuthorPage.xaml.cs">
       <DependentUpon>AuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\ConsultAuthorPage.xaml.cs">
+      <DependentUpon>ConsultAuthorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\ConsultFilmPage.xaml.cs">
       <DependentUpon>ConsultFilmPage.xaml</DependentUpon>
@@ -237,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\AuthorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\ConsultAuthorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
