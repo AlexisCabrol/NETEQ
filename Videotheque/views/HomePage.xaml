@@ -10,6 +10,17 @@
       Title="HomePage"
       Background="#656565"
       Loaded="Page_Loaded">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="#F3F3F3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,9 +34,28 @@
             </lvc:PieChart.ChartLegend>
         </lvc:PieChart>
 
-        <Button Command="{Binding Film}" Content="Voir la liste des films" Margin="104,0,546,43.6" Width="150" Height="19" VerticalAlignment="Bottom" Grid.Row="1"/>
-        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" Margin="329,0,321,43.6" Width="150" Height="19" VerticalAlignment="Bottom" Grid.Row="1"/>
-        <Button Command="{Binding Friend}" Content="Liste d'amis" Margin="562,0,88,43.6" Width="150" Height="19" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <Button Command="{Binding Film}" Content="Voir la liste des films" Margin="104,0,536,43.6">
+            
+             <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" Margin="329,0,311,43.6">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding Friend}" Content="Liste d'amis" Margin="562,0,78,43.6">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <TextBlock Foreground="#F3F3F3" Margin="10,0,638,-0.4" TextWrapping="Wrap" Text="© Copyright Cabrol Alexis" Height="26" VerticalAlignment="Bottom" Grid.Row="1"/>
         <Rectangle Fill="Black" Height="65" Stroke="Black" VerticalAlignment="Top"/>
         <TextBlock Foreground="#D10000" HorizontalAlignment="Center" TextWrapping="Wrap" Text="NetTeq" VerticalAlignment="Top" Margin="381,20,358,0" FontSize="18" Width="61" FontWeight="Bold"/>
