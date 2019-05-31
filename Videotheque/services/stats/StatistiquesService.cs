@@ -10,5 +10,6 @@ namespace Videotheque.services.stats
     {
         Task<Dictionary<string, int>> FilmPerGenre();
         Task<int> FilmInDatabase();
+        Task<Dictionary<string, int>> FilmStatut();
     }
 }

@@ -33,8 +33,15 @@
             <RowDefinition Height="41*"/>
             <RowDefinition Height="201*"/>
         </Grid.RowDefinitions>
-        <lvc:PieChart Name="Chart" Series="{Binding MediaPerGenre}" 
+        <lvc:PieChart Series="{Binding MediaPerGenre}" 
                       LegendLocation="Right" InnerRadius="100" Margin="72,50,0,154.6" Width="350" Grid.RowSpan="3" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+            <lvc:PieChart.ChartLegend>
+                <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+            </lvc:PieChart.ChartLegend>
+        </lvc:PieChart>
+
+        <lvc:PieChart Series="{Binding MediaStatut}" 
+                      LegendLocation="Right" InnerRadius="100" Margin="0,50,78,154.6" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Right" Width="350">
             <lvc:PieChart.ChartLegend>
                 <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
             </lvc:PieChart.ChartLegend>

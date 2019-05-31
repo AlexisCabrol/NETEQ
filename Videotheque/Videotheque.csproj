@@ -206,6 +206,7 @@
     <Compile Include="utils\ComboboxUtils.cs" />
     <Compile Include="utils\EnumUtils.cs" />
     <Compile Include="utils\GenerateDataUtils.cs" />
+    <Compile Include="utils\StatistiqueUtils.cs" />
     <Compile Include="viewmodels\AddAuthorPageViewModel.cs" />
     <Compile Include="viewmodels\AddFilmPageViewModel.cs" />
     <Compile Include="viewmodels\AddFriendPageViewModel.cs" />

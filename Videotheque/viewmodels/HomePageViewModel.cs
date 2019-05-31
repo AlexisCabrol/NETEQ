@@ -10,6 +10,7 @@ using Videotheque.config;
 using Videotheque.models;
 using Videotheque.services.stats;
 using Videotheque.services.stats.impl;
+using Videotheque.utils;
 using Videotheque.views;
 
 namespace Videotheque.viewmodels
@@ -23,20 +24,19 @@ namespace Videotheque.viewmodels
         }
 
         public SeriesCollection MediaPerGenre { get { return GetValue<SeriesCollection>(); } set { SetValue<SeriesCollection>(value); } }
+        public SeriesCollection MediaStatut { get { return GetValue<SeriesCollection>(); } set { SetValue<SeriesCollection>(value); } }
         public int FilmInDatabase { get { return GetValue<int>(); } set { SetValue<int>(value); } }
         public async void BuildStats()
         {
+            // Build stat media per genre
             Dictionary<string, int> statMediaPerGenre = await statistiquesService.FilmPerGenre();
-            MediaPerGenre = new SeriesCollection();
-            foreach(KeyValuePair<string, int> entry in statMediaPerGenre)
-            {
-                MediaPerGenre.Add(new PieSeries()
-                {
-                    Title = entry.Key,
-                    Values = new ChartValues<ObservableValue> { new ObservableValue(entry.Value) },
-                    DataLabels = true
-                });
-            }
+            MediaPerGenre = StatistiqueUtils.BuildSeriesCollection(statMediaPerGenre);
+
+            // Build stat media statut
+            Dictionary<string, int> statMediaStatut = await statistiquesService.FilmStatut();
+            MediaStatut = StatistiqueUtils.BuildSeriesCollection(statMediaStatut);
+
+            // Build stat number of film in database
             FilmInDatabase = await statistiquesService.FilmInDatabase();
         }
         public MainViewModel SuperViewModel

@@ -30,5 +30,23 @@ namespace Videotheque.services.stats.impl
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             return context.Film.Count();
         }
+
+        public async Task<Dictionary<string, int>> FilmStatut()
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+
+            List<Film> listf = context.Film.ToList();
+            var stat = from u in listf
+                       group u by u.Statut into grp
+                       select new
+                       {
+                           Statut = grp.Key.ToString(),
+                           Count = grp.Count(),
+                       };
+            return stat.ToDictionary(p => p.Statut, p => p.Count);
+        }
+
+
+
     }
 }
