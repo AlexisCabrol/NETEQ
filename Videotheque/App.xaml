@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:Videotheque"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="MinWidth" Value="150"/>
+            <Setter Property="Background" Value="#929292"/>
+            <Setter Property="Foreground" Value="#F3F3F3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
     </Application.Resources>
 </Application>

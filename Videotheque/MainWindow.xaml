@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Videotheque"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        WindowState="Maximized">
+        Title="NETEQ"
+        Background="#656565"
+        WindowState="Maximized"
+        MinWidth="1280"
+        MinHeight="720">
     <Grid>
         <Frame NavigationUIVisibility="Hidden" Content="{Binding Source}"/>
 
