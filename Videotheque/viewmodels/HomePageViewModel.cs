@@ -23,6 +23,7 @@ namespace Videotheque.viewmodels
         }
 
         public SeriesCollection MediaPerGenre { get { return GetValue<SeriesCollection>(); } set { SetValue<SeriesCollection>(value); } }
+        public int FilmInDatabase { get { return GetValue<int>(); } set { SetValue<int>(value); } }
         public async void BuildStats()
         {
             Dictionary<string, int> statMediaPerGenre = await statistiquesService.FilmPerGenre();
@@ -36,7 +37,7 @@ namespace Videotheque.viewmodels
                     DataLabels = true
                 });
             }
-
+            FilmInDatabase = await statistiquesService.FilmInDatabase();
         }
         public MainViewModel SuperViewModel
         {

@@ -14,7 +14,8 @@
         <Style TargetType="Button">
             <Setter Property="Width" Value="160"/>
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Background" Value="#F3F3F3"/>
+            <Setter Property="Background" Value="#929292"/>
+            <Setter Property="Foreground" Value="#F3F3F3"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Grid.Row" Value="1" />
             <Setter Property="VerticalAlignment" Value="Bottom"/>
@@ -23,42 +24,49 @@
     </Page.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="51*"/>
+            <ColumnDefinition Width="49*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="104*"/>
-            <RowDefinition Height="121*"/>
+            <RowDefinition Height="208*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="201*"/>
         </Grid.RowDefinitions>
         <lvc:PieChart Name="Chart" Series="{Binding MediaPerGenre}" 
-                      LegendLocation="Right" InnerRadius="100" Margin="72,50,0,154.6" Width="350" Grid.RowSpan="2" HorizontalAlignment="Left">
+                      LegendLocation="Right" InnerRadius="100" Margin="72,50,0,154.6" Width="350" Grid.RowSpan="3" HorizontalAlignment="Left" Grid.ColumnSpan="2">
             <lvc:PieChart.ChartLegend>
                 <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
             </lvc:PieChart.ChartLegend>
         </lvc:PieChart>
 
-        <Button Command="{Binding Film}" Content="Voir la liste des films" Margin="104,0,536,43.6">
-            
-             <Button.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="7"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" Margin="329,0,311,43.6">
+        <Button Command="{Binding Film}" Content="Voir la liste des films" Margin="104,0,144,43.6" Grid.Row="2">
+
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Command="{Binding Friend}" Content="Liste d'amis" Margin="562,0,78,43.6">
+        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" Margin="329,0,311,43.6" Grid.ColumnSpan="2" Grid.Row="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBlock Foreground="#F3F3F3" Margin="10,0,638,-0.4" TextWrapping="Wrap" Text="© Copyright Cabrol Alexis" Height="26" VerticalAlignment="Bottom" Grid.Row="1"/>
-        <Rectangle Fill="Black" Height="65" Stroke="Black" VerticalAlignment="Top"/>
-        <TextBlock Foreground="#D10000" HorizontalAlignment="Center" TextWrapping="Wrap" Text="NetTeq" VerticalAlignment="Top" Margin="381,20,358,0" FontSize="18" Width="61" FontWeight="Bold"/>
-        <TextBlock Foreground="#F3F3F3" Margin="135,87,0,134.6" Grid.Row="1" TextWrapping="Wrap" Text="Nombre de films par genre" FontStyle="Italic" HorizontalAlignment="Left" Width="155" Height="20"/>
+        <Button Command="{Binding Friend}" Content="Liste d'amis" Margin="154,0,78,43.6" Grid.Column="1" Grid.Row="2">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBlock Foreground="#F3F3F3" Margin="10,0,246,-0.4" TextWrapping="Wrap" Text="© Copyright Cabrol Alexis" Height="26" VerticalAlignment="Bottom" Grid.Row="2"/>
+        <Rectangle Fill="Black" Height="65" Stroke="Black" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBlock Foreground="#D10000" HorizontalAlignment="Center" TextWrapping="Wrap" Text="NETEQ" VerticalAlignment="Top" Margin="330,7,330,0" FontSize="40" Width="140" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <TextBlock Foreground="#F3F3F3" Margin="101,46.2,0,129.6" Grid.Row="2" TextWrapping="Wrap" Text="Nombre de films par genre" HorizontalAlignment="Left" Width="197" FontSize="16"/>
+        <TextBlock Foreground="#F3F3F3" Margin="362,170,346,14.6" TextWrapping="Wrap" Text="100" FontWeight="Bold" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Foreground="#F3F3F3" Margin="358,7,334,12.8" TextWrapping="Wrap" Text="films présents" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="108" FontSize="16" Grid.Row="1"/>
     </Grid>
 </Page>

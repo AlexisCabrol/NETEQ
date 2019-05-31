@@ -14,7 +14,6 @@ namespace Videotheque.services.stats.impl
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
 
-            List<Genre> listg = context.Genre.ToList();
             List<MediaGenre> listmg = context.MediaGenre.ToList();
             var stat = from u in listmg
                        group u by u.Genre.Name into grp
@@ -24,6 +23,12 @@ namespace Videotheque.services.stats.impl
                            Count = grp.Count(),
                        };
             return stat.ToDictionary(p => p.Genre, p => p.Count);
+        }
+
+        public async Task<int> FilmInDatabase()
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            return context.Film.Count();
         }
     }
 }
