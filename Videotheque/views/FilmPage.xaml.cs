@@ -77,7 +77,6 @@ namespace Videotheque.views
         private void UpdateEnabledBtn(bool visible)
         {
             ConsultFilmBtn.IsEnabled = visible;
-            UpdateFilmBtn.IsEnabled = visible;
             DeleteFilmBtn.IsEnabled = visible;
         }
 

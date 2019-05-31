@@ -49,18 +49,6 @@ namespace Videotheque.viewmodels
             set { SetValue<Film>(value);  }
         }
 
-        public Command UpdateFilm
-        {
-            // TODO
-            get
-            {
-                return new Command(() =>
-                {
-                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel);
-                });
-            }
-        }
-
         public async void DeleteFilm()
         {
             await filmService.DeleteFilm(CurrentFilm);
@@ -85,6 +73,17 @@ namespace Videotheque.viewmodels
                 return new Command(() =>
                 {
                     SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
+        public Command GoBack
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<HomePage, HomePageViewModel>(SuperViewModel);
                 });
             }
         }

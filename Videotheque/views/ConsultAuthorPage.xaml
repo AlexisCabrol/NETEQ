@@ -5,23 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="ConsultAuthorPage"
-      Loaded="OnPageLoaded">
+      Loaded="OnPageLoaded"
+      d:DesignHeight="720" d:DesignWidth="1280">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="262*"/>
-            <RowDefinition Height="187*"/>
+            <RowDefinition Height="580" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="357*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Right" Margin="0,55,692,0" TextWrapping="Wrap" Text="{Binding Author.Prenom}" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="0,42,515,0" TextWrapping="Wrap" Text="{Binding Author.Nom}" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0.6,116,0,0" TextWrapping="Wrap" Text="{Binding Author.Nationalite}" VerticalAlignment="Top"/>
-        <ListBox Name="ListMediaPersonne" ItemsSource="{Binding AuthorWithHisFilms}" SelectedValue="{Binding CurrentMediaPersonne}" Height="100" Margin="0,210,65,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="680" Grid.ColumnSpan="2" Grid.RowSpan="2" SelectionChanged="ListMediaPersonne_SelectionChanged">
+        <TextBlock Margin="225,83,0,433.8" TextWrapping="Wrap" Text="{Binding Author.Nom}" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,157,0,375.8" TextWrapping="Wrap" Text="{Binding Author.Prenom}" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,210,152,343.8" TextWrapping="Wrap" Text="{Binding Author.Nationalite}" VerticalAlignment="Center" FontSize="20"/>
+        <ListBox Name="ListMediaPersonne" ItemsSource="{Binding AuthorWithHisFilms}" SelectedValue="{Binding CurrentMediaPersonne}" Height="100" Margin="158,450,152,30.8" VerticalAlignment="Center" HorizontalAlignment="Center" Width="970" SelectionChanged="ListMediaPersonne_SelectionChanged">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -32,7 +28,19 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
-        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer" HorizontalAlignment="Left" Margin="55,140.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="Button_Click"/>
-        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Left" Margin="92.6,140.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer" HorizontalAlignment="Left" Margin="158,40.2,962,-29.4" VerticalAlignment="Stretch" Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding GoBack}" Content="Retour" Margin="158.4,40.2,152,-29.4" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

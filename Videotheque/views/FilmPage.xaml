@@ -5,16 +5,45 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="FilmPage"
       Loaded="OnPageLoaded">
     <Grid>
-        <Button Command="{Binding AddFilm}" Content="Ajouter un film" HorizontalAlignment="Left" Margin="577,138,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Name="ConsultFilmBtn" IsEnabled="False" Command="{Binding ConsultFilm}" Content="Consulter un film" HorizontalAlignment="Left" Margin="577,189,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Name="UpdateFilmBtn" IsEnabled="False" Command="{Binding UpdateFilm}" Content="Modifier un film" HorizontalAlignment="Left" Margin="577,238,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Name="DeleteFilmBtn" IsEnabled="False" Content="Supprimer un film" HorizontalAlignment="Left" Margin="577,290,0,0" VerticalAlignment="Top" Width="149" Click="DeleteFilmBtn_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="83.2"/>
+            <RowDefinition Height="500" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Button Command="{Binding AddFilm}" Content="Ajouter un film" Margin="710,40.2,410,-29.4" VerticalAlignment="Stretch" Grid.Row="2" HorizontalAlignment="Center">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding ConsultFilm}" Name="ConsultFilmBtn" IsEnabled="False" Content="Consulter" Margin="158,40.2,962,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="DeleteFilmBtn" IsEnabled="False" Content="Supprimer" Margin="422,40.2,0,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left" Click="DeleteFilmBtn_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding GoBack}" Content="Retour" Margin="158.4,40.2,152,-29.4" VerticalAlignment="Top" Grid.Row="2" HorizontalAlignment="Right" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
-        <ListBox ItemsSource="{Binding Films}" SelectedValue="{Binding CurrentFilm}" HorizontalAlignment="Left" Height="342" Margin="23,79,0,0" VerticalAlignment="Top" Width="472" Name="ListFilm" SelectionChanged="ListFilm_SelectionChanged">
+        <ListBox Name="ListFilm" SelectedValue="{Binding CurrentFilm}" ItemsSource="{Binding Films}" Margin="11,25.2,9.6,61" SelectionChanged="ListFilm_SelectionChanged" Grid.RowSpan="3" Grid.ColumnSpan="1" Grid.Row="1">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -25,13 +54,12 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
-        
-        <TextBox Name="SearchText" HorizontalAlignment="Left" Height="23" Margin="87,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="283" TextChanged="Search_TextChanged"/>
-        <ComboBox Name="FilterBox" HorizontalAlignment="Left" Margin="375,51,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="TrierFilm_SelectionChanged">
+
+        <TextBox Name="SearchText" Margin="69,50,170.6,12.2" TextWrapping="Wrap" Text="" TextChanged="Search_TextChanged" Grid.Row="0"/>
+        <ComboBox Name="FilterBox" HorizontalAlignment="Right" Margin="0,0,10.6,10.2" VerticalAlignment="Bottom" Width="140" SelectionChanged="TrierFilm_SelectionChanged" Grid.Row="0" Height="22">
             <ComboBoxItem>Trier par A-Z</ComboBoxItem>
             <ComboBoxItem>Trier par Z-A</ComboBoxItem>
         </ComboBox>
-        <Label Content="Recherche" HorizontalAlignment="Left" Margin="23,48,0,0" VerticalAlignment="Top"/>
-
+        <Label Foreground="#F3F3F3" Content="Recherche" HorizontalAlignment="Left" Margin="0,0,740.6,8" VerticalAlignment="Bottom" Grid.Row="0" Height="26" Width="64"/>
     </Grid>
 </Page>
