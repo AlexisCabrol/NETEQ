@@ -72,9 +72,9 @@ namespace Videotheque.views
             }
         }
 
-        private void DeleteFilmBtn_Click(object sender, RoutedEventArgs e)
+        private void DeleteFriendBtn_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DeleteFilm();
+            ViewModel.DeleteFriend();
             UpdateFilterList(FilterBox.SelectedIndex);
             SearchText.Text = "";
         }

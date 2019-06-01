@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
-      Title="FriendPage">
+      Title="FriendPage"
+      Loaded="OnPageLoaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="83.2"/>
@@ -20,7 +21,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Name="DeleteFriendBtn" IsEnabled="False" Content="Supprimer" Margin="156,40.2,0,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left" Click="DeleteFilmBtn_Click">
+        <Button Name="DeleteFriendBtn" IsEnabled="False" Content="Supprimer" Margin="156,40.2,0,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left" Click="DeleteFriendBtn_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

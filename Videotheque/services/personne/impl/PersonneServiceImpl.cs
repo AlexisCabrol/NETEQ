@@ -16,6 +16,14 @@ namespace Videotheque.services.personne.impl
                 .ToList<Personne>());
         }
 
+        public async Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneAuthor(int id)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            return new ObservableCollection<MediaPersonne>(context.MediaPersonne
+                .Where(b => b.PersonneId == id && b.Fonction == models.enums.Fonction.Acteur)
+                .ToList());
+        }
+
         public async Task DeleteMediaPersonne(MediaPersonne mp)
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();

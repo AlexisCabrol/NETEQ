@@ -53,7 +53,8 @@ namespace Videotheque.viewmodels
                         Nom = this.Nom,
                         Prenom = this.Prenom,
                         Civilite = this.CivEnum,
-                        Nationalite = this.NatEnum
+                        Nationalite = this.NatEnum,
+                        Ami = true
                     });
                     SuperViewModel.Source = NavigationCache.GetPage<FriendPage, FriendPageViewModel>(SuperViewModel);
                 });
