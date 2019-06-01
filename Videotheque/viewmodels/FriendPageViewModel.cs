@@ -6,19 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Videotheque.config;
 using Videotheque.models;
+using Videotheque.services.personne;
+using Videotheque.services.personne.impl;
 using Videotheque.views;
 
 namespace Videotheque.viewmodels
 {
     class FriendPageViewModel: AbstractModel
     {
+        private readonly PersonneService personneService = new PersonneServiceImpl();
         public FriendPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            this.Friends = new ObservableCollection<Personne>();
-            this.Friends.Add(new Personne() { Nom = "Cabrol", Prenom = "Alexis" });
-            this.Friends.Add(new Personne() { Nom = "Olivaux", Prenom = "Alexandra" });
-            this.Friends.Add(new Personne() { Nom = "Lamarre", Prenom = "Laurine" });
         }
 
         public MainViewModel SuperViewModel
@@ -33,6 +32,28 @@ namespace Videotheque.viewmodels
             set { SetValue<ObservableCollection<Personne>>(value); }
         }
 
+        public Personne CurrentFriend
+        {
+            get { return GetValue<Personne>(); }
+            set { SetValue<Personne>(value); }
+        }
+
+        public async void CallService()
+        {
+            Friends = await personneService.SelectAllFriend();
+        }
+
+        public async void SearchByText(string text)
+        {
+            Friends = await personneService.SelectFriendFilter(text);
+        }
+
+        public async void DeleteFriend()
+        {
+            await personneService.DeleteFriend(CurrentFriend);
+            CallService();
+        }
+
         public Command AddFriend
         {
             get
@@ -40,6 +61,17 @@ namespace Videotheque.viewmodels
                 return new Command(() =>
                 {
                     SuperViewModel.Source = NavigationCache.GetPage<AddFriendPage, AddFriendPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
+        public Command GoBack
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<HomePage, HomePageViewModel>(SuperViewModel);
                 });
             }
         }

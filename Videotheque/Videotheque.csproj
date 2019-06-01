@@ -196,6 +196,10 @@
     <Compile Include="Migrations\20190527202112_database.designer.cs">
       <DependentUpon>20190527202112_database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190601101332_Ami.cs" />
+    <Compile Include="Migrations\20190601101332_Ami.designer.cs">
+      <DependentUpon>20190601101332_Ami.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DatabaseContextModelSnapshot.cs" />
     <Compile Include="services\film\FilmService.cs" />
     <Compile Include="services\film\impl\FilmServiceImpl.cs" />

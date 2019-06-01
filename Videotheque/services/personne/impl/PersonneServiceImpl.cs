@@ -7,13 +7,6 @@ namespace Videotheque.services.personne.impl
 {
     class PersonneServiceImpl : PersonneService
     {
-        public async Task AddFriend(Personne p)
-        {
-            var context = await databaseAccess.DatabaseContext.GetCurrent();
-            context.Personne.Add(p);
-            await context.SaveChangesAsync();
-        }
-
         public async Task<ObservableCollection<Personne>> SelectAllAuthor()
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
@@ -43,12 +36,33 @@ namespace Videotheque.services.personne.impl
                 list.Where(author => author.GetIdentity().ToLower().Contains(text.ToLower())).ToList());
         }
 
-        public async Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneAuthor(int id)
+        public async Task DeleteFriend(Personne p)
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
-            return new ObservableCollection<MediaPersonne> (context.MediaPersonne
-                .Where(b => b.PersonneId == id && b.Fonction == models.enums.Fonction.Acteur)
-                .ToList());
+            context.Personne.Remove(p);
+            await context.SaveChangesAsync();
         }
+
+        public async Task<ObservableCollection<Personne>> SelectAllFriend()
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            return new ObservableCollection<Personne>(context.Personne
+                .Where(b => b.Ami)
+                .ToList<Personne>());
+        }
+
+        public async Task<ObservableCollection<Personne>> SelectFriendFilter(string text)
+        {
+            ObservableCollection<Personne> list = await SelectAllFriend();
+            return new ObservableCollection<Personne>(
+                list.Where(p => p.GetIdentity().ToLower().Contains(text.ToLower())).ToList());
+        }
+        public async Task AddFriend(Personne p)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            context.Personne.Add(p);
+            await context.SaveChangesAsync();
+        }
+
     }
 }

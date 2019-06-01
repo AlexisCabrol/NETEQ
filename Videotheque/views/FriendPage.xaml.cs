@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Videotheque.models;
+using Videotheque.viewmodels;
 
 namespace Videotheque.views
 {
@@ -21,61 +23,71 @@ namespace Videotheque.views
     /// </summary>
     public partial class FriendPage : Page
     {
+        private FriendPageViewModel ViewModel;
         public FriendPage()
         {
             InitializeComponent();
-            this.ListFriendStart = new List<Personne>();
         }
 
-        private List<Personne> ListFriendStart
+        private void OnPageLoaded(object sender, RoutedEventArgs e)
         {
-            get; set;
+            this.ViewModel = DataContext as FriendPageViewModel;
+            ViewModel.CallService();
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string Search = SearchText.Text.Trim();
-            firstCall();
 
             if (!String.IsNullOrEmpty(Search))
             {
-                ListFriend.ItemsSource = ListFriendStart.FindAll(author => author.GetIdentity().ToLower().Contains(Search.ToLower()));
+                ViewModel.SearchByText(Search);
             }
             else
             {
-                ListFriend.ItemsSource = ListFriendStart;
+                ViewModel.CallService();
             }
         }
 
         private void TrierFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            firstCall();
+            UpdateFilterList(FilterBox.SelectedIndex);
+        }
 
-            List<Personne> sortedList = ListFriendStart;
-            switch (FilterBox.SelectedIndex)
+        private void UpdateFilterList(int statut)
+        {
+            switch (statut)
             {
                 case 0:
-                    sortedList.Sort();
-                    ListFriend.ItemsSource = sortedList;
-                    ListFriend.Items.Refresh();
+                    ViewModel.Friends = new ObservableCollection<Personne>(
+                        ViewModel.Friends.OrderBy(p => p.GetIdentity()).ToList());
                     break;
                 case 1:
-                    sortedList.Sort();
-                    sortedList.Reverse();
-                    ListFriend.ItemsSource = sortedList;
-                    ListFriend.Items.Refresh();
+                    ViewModel.Friends = new ObservableCollection<Personne>(
+                        ViewModel.Friends.OrderByDescending(p => p.GetIdentity()).ToList());
                     break;
                 default:
-                    ListFriend.ItemsSource = ListFriendStart;
+                    ViewModel.CallService();
                     break;
             }
         }
 
-        private void firstCall()
+        private void DeleteFilmBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!ListFriendStart.Any())
+            ViewModel.DeleteFilm();
+            UpdateFilterList(FilterBox.SelectedIndex);
+            SearchText.Text = "";
+        }
+
+        private void ListFriend_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListFriend.SelectedItem != null)
             {
-                this.ListFriendStart = ListFriend.Items.OfType<Personne>().ToList();
+                DeleteFriendBtn.IsEnabled = true;
+            }
+            else
+            {
+                DeleteFriendBtn.IsEnabled = false;
             }
         }
     }

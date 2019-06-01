@@ -12,11 +12,13 @@ namespace Videotheque.services.personne
     {
         // Service for friend management
         Task AddFriend(Personne p);
+        Task DeleteFriend(Personne p);
+        Task<ObservableCollection<Personne>> SelectAllFriend();
+        Task<ObservableCollection<Personne>> SelectFriendFilter(string text);
 
         // Service for author management
         Task<ObservableCollection<Personne>> SelectAllAuthor();
         Task<ObservableCollection<Personne>> SelectAuthorFilter(string text);
-        Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneAuthor(int id);
         Task DeleteMediaPersonne(MediaPersonne p);
     }
 }

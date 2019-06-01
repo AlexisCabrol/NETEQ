@@ -38,6 +38,12 @@ namespace Videotheque.models
             set { SetValue(value); }
         }
 
+        public Boolean Ami
+        {
+            get { return GetValue<Boolean>(); }
+            set { SetValue(value); }
+        }
+
         public byte[] PhotoProfil
         {
             get { return GetValue<byte[]>(); }
