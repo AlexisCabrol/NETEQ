@@ -39,11 +39,6 @@ namespace Videotheque.viewmodels
             // Build stat number of film in database
             FilmInDatabase = await statistiquesService.FilmInDatabase();
         }
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
 
         public Command Film
         {

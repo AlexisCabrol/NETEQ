@@ -33,6 +33,13 @@
         <TextBlock Foreground="#F3F3F3" Margin="935,516,214,118" TextWrapping="Wrap" Text="{Binding Film.Audiodescription}" VerticalAlignment="Center" FontSize="12" Height="26"/>
 
 
+        <Button Command="{Binding UpdateFilm}" Content="Modifier" Margin="152,0,0,30" Grid.Row="1" VerticalAlignment="Stretch" Height="28" Width="160" HorizontalAlignment="Left">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
         <Button Command="{Binding GoBack}" Content="Retour" Margin="0,0,152,30" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Height="28">

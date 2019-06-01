@@ -13,11 +13,5 @@ namespace Videotheque.viewmodels
         {
             SuperViewModel = mvm;
         }
-
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
     }
 }

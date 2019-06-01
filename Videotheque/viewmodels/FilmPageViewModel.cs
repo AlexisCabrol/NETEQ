@@ -31,12 +31,6 @@ namespace Videotheque.viewmodels
             Films = await filmService.SelectFilmFilter(text);
         }
 
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
-
         public ObservableCollection<Film> Films
         {
             get { return GetValue<ObservableCollection<Film>>();  }
@@ -72,7 +66,7 @@ namespace Videotheque.viewmodels
             {
                 return new Command(() =>
                 {
-                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel);
+                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel, null);
                 });
             }
         }

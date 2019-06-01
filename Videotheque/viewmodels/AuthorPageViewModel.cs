@@ -28,12 +28,6 @@ namespace Videotheque.viewmodels
             Authors = await personneService.SelectAuthorFilter(text);
         }
 
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
-
         public ObservableCollection<Personne> Authors
         {
             get { return GetValue<ObservableCollection<Personne>>(); }

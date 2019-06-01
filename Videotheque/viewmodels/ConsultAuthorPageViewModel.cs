@@ -26,12 +26,6 @@ namespace Videotheque.viewmodels
             get { return GetValue<Personne>(); }
             set { SetValue<Personne>(value); }
         }
- 
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
 
         public ObservableCollection<MediaPersonne> AuthorWithHisFilms
         {

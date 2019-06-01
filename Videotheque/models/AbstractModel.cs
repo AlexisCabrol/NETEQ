@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Videotheque.viewmodels;
 
 namespace Videotheque.models
 {
@@ -30,6 +31,12 @@ namespace Videotheque.models
                 propertyValues[propertyName] = newValue;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public MainViewModel SuperViewModel
+        {
+            get { return GetValue<MainViewModel>(); }
+            set { SetValue<MainViewModel>(value); }
         }
     }
 }

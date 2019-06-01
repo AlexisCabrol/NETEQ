@@ -17,16 +17,21 @@ namespace Videotheque.viewmodels
             Film = film;
         }
 
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
-
         public Film Film
         {
             get { return GetValue<Film>(); }
             set { SetValue<Film>(value); }
+        }
+
+        public Command UpdateFilm
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel, Film);
+                });
+            }
         }
 
         public Command GoBack
