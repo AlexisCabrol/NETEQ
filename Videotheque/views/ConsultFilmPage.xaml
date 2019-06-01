@@ -5,14 +5,43 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="ConsultFilmPage">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,750,402" TextWrapping="Wrap" Text="{Binding Film.Titre}" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,750,366" TextWrapping="Wrap" Text="{Binding Film.Synopsis}" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,750,286" TextWrapping="Wrap" Text="{Binding Film.Commentaire}" VerticalAlignment="Bottom"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="660" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <TextBlock Margin="225,42,0,554" TextWrapping="Wrap" Text="{Binding Film.Titre}" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,111,0,501" TextWrapping="Wrap" Text="{Binding Film.Statut}" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,164,152,466" TextWrapping="Wrap" Text="Synopsis" VerticalAlignment="Center" FontSize="20" Height="30"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,199,152,345" TextWrapping="Wrap" Text="{Binding Film.Synopsis}" VerticalAlignment="Center" FontSize="16" Height="Auto"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,320,152,310" TextWrapping="Wrap" Text="Commentaire" VerticalAlignment="Center" FontSize="20" Height="30"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,355,152,192" TextWrapping="Wrap" Text="{Binding Film.Commentaire}" VerticalAlignment="Center" FontSize="16" Height="Auto"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,473,955,161" TextWrapping="Wrap" Text="Age minimum :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="225,516,919,118" TextWrapping="Wrap" Text="Support physique :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="312,473,910,161" TextWrapping="Wrap" Text="{Binding Film.AgeMin}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="366,516,856,118" TextWrapping="Wrap" Text="{Binding Film.SupportPhysique}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="447,473,775,161" TextWrapping="Wrap" Text="VO :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="447,516,684,118" TextWrapping="Wrap" Text="Support numérique :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="479,473,684,161" TextWrapping="Wrap" Text="{Binding Film.LangueVO}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="601,516,562,118" TextWrapping="Wrap" Text="{Binding Film.SupportNumerique}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="744,473,424,161" TextWrapping="Wrap" Text="Langue :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="744,516,345,118" TextWrapping="Wrap" Text="Audio description :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="870,473,279,161" TextWrapping="Wrap" Text="{Binding Film.LangueMedia}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="935,516,214,118" TextWrapping="Wrap" Text="{Binding Film.Audiodescription}" VerticalAlignment="Center" FontSize="12" Height="26"/>
 
+
+
+
+        <Button Command="{Binding GoBack}" Content="Retour" Margin="0,0,152,30" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Right" Height="28">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
     </Grid>
