@@ -14,14 +14,14 @@
             <RowDefinition Height="500" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
-        <Button Command="{Binding AddFriend}" Content="Ajouter un ami" Margin="516,40.2,604,-29.4" VerticalAlignment="Stretch" Grid.Row="2" HorizontalAlignment="Center">
+        <Button Command="{Binding AddFriend}" Content="Ajouter un ami" Margin="671,40.2,449,-29.4" VerticalAlignment="Stretch" Grid.Row="2" HorizontalAlignment="Center">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Name="DeleteFriendBtn" IsEnabled="False" Content="Supprimer" Margin="156,40.2,0,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left" Click="DeleteFriendBtn_Click">
+        <Button Name="DeleteFriendBtn" IsEnabled="False" Content="Supprimer" Margin="402,40.2,0,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left" Click="DeleteFriendBtn_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
@@ -29,6 +29,14 @@
             </Button.Resources>
         </Button>
         <Button Command="{Binding GoBack}" Content="Retour" Margin="158.4,40.2,152,-29.4" VerticalAlignment="Top" Grid.Row="2" HorizontalAlignment="Right" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Command="{Binding ConsultFriend}" Name="ConsultFriendBtn" IsEnabled="False" Content="Consulter" Margin="157,40.2,0,-29.4" VerticalAlignment="Stretch" Grid.Row="2" Height="Auto" Width="Auto" HorizontalAlignment="Left">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

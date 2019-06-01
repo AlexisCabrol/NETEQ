@@ -56,7 +56,20 @@ namespace Videotheque.viewmodels
             {
                 return new Command(() =>
                 {
+                    SuperViewModel.MVMFriend = null;
                     SuperViewModel.Source = NavigationCache.GetPage<AddFriendPage, AddFriendPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
+        public Command ConsultFriend
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.MVMFriend = CurrentFriend;
+                    SuperViewModel.Source = NavigationCache.GetPage<ConsultFriendPage, ConsultFriendPageViewModel>(SuperViewModel);
                 });
             }
         }

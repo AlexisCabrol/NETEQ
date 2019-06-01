@@ -20,16 +20,19 @@ namespace Videotheque.viewmodels
         public Film Film { get { return GetValue<Film>(); } set { SetValue<Film>(value); } }
         public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
 
-        public AddFilmPageViewModel(MainViewModel mvm, Film f)
+        public AddFilmPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
             ListVO = ComboboxUtils.init(new Pays());
             ListME = ComboboxUtils.init(new Pays());
             ListStatut = ComboboxUtils.init(new Statut());
+        }
 
-            if (f != null)
+        public void Setup()
+        {
+            if (SuperViewModel.MVMFilm != null)
             {
-                Film = f;
+                Film = SuperViewModel.MVMFilm;
                 UpdateMode = true;
             }
             else
@@ -47,7 +50,8 @@ namespace Videotheque.viewmodels
                     if (UpdateMode)
                     {
                         await filmService.UpdateFilm(Film);
-                        SuperViewModel.Source = NavigationCache.GetPage<ConsultFilmPage, ConsultFilmPageViewModel>(SuperViewModel, Film);
+                        SuperViewModel.MVMFilm = Film;
+                        SuperViewModel.Source = NavigationCache.GetPage<ConsultFilmPage, ConsultFilmPageViewModel>(SuperViewModel);
                     }
                     else
                     {

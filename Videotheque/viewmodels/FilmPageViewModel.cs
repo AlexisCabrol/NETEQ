@@ -55,7 +55,8 @@ namespace Videotheque.viewmodels
             {
                 return new Command(() =>
                 {
-                    SuperViewModel.Source = NavigationCache.GetPage<ConsultFilmPage, ConsultFilmPageViewModel> (SuperViewModel, CurrentFilm);
+                    SuperViewModel.MVMFilm = CurrentFilm;
+                    SuperViewModel.Source = NavigationCache.GetPage<ConsultFilmPage, ConsultFilmPageViewModel> (SuperViewModel);
                 });
             }
         }
@@ -66,7 +67,8 @@ namespace Videotheque.viewmodels
             {
                 return new Command(() =>
                 {
-                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel, null);
+                    SuperViewModel.MVMFilm = null;
+                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel);
                 });
             }
         }

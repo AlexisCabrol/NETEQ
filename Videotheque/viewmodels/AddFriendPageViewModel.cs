@@ -12,23 +12,11 @@ namespace Videotheque.viewmodels
     class AddFriendPageViewModel : AbstractModel
     {
         private readonly PersonneService personneService = new PersonneServiceImpl();
+        private bool UpdateMode = false;
         public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
-        public string Nom { get { return GetValue<string>(); } set { SetValue<string>(value); } }
-        public string Prenom { get { return GetValue<string>(); } set { SetValue<string>(value); } }
+        public Personne Friend { get { return GetValue<Personne>(); } set { SetValue<Personne>(value); } }
         public List<ComboboxUtils> ListCivilite { get; set; }
         public List<ComboboxUtils> ListNat { get; set; }
-
-        public Civilite CivEnum
-        {
-            get { return GetValue<Civilite>(); }
-            set { SetValue<Civilite>(value); }
-        }
-
-        public Pays NatEnum
-        {
-            get { return GetValue<Pays>(); }
-            set { SetValue<Pays>(value); }
-        }
 
         public AddFriendPageViewModel(MainViewModel mvm)
         {
@@ -37,21 +25,39 @@ namespace Videotheque.viewmodels
             ListNat = ComboboxUtils.init(new Pays());
         }
 
+        public void Setup()
+        {
+            if (SuperViewModel.MVMFriend != null)
+            {
+                UpdateMode = true;
+                Friend = SuperViewModel.MVMFriend;
+            }
+            else
+            {
+                Friend = new Personne
+                {
+                    Ami = true
+                };
+            }
+        }
+
         public Command ValidateFriend
         {
             get
             {
                 return new Command(async () =>
                 {
-                    await personneService.AddFriend(new Personne()
+                    if (UpdateMode)
                     {
-                        Nom = this.Nom,
-                        Prenom = this.Prenom,
-                        Civilite = this.CivEnum,
-                        Nationalite = this.NatEnum,
-                        Ami = true
-                    });
-                    SuperViewModel.Source = NavigationCache.GetPage<FriendPage, FriendPageViewModel>(SuperViewModel);
+                        await personneService.UpdateFriend(Friend);
+                        SuperViewModel.MVMFriend = Friend;
+                        SuperViewModel.Source = NavigationCache.GetPage<ConsultFriendPage, ConsultFriendPageViewModel>(SuperViewModel, Friend);
+                    }
+                    else
+                    {
+                        await personneService.AddFriend(Friend);
+                        SuperViewModel.Source = NavigationCache.GetPage<FriendPage, FriendPageViewModel>(SuperViewModel);
+                    }
                 });
             }
         }

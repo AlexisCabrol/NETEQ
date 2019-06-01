@@ -9,18 +9,18 @@
       Title="AddFriendPage">
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="170,94,0,0" TextWrapping="Wrap" Text="{Binding Nom}" VerticalAlignment="Top" Width="522"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="170,94,0,0" TextWrapping="Wrap" Text="{Binding Friend.Nom}" VerticalAlignment="Top" Width="522"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="104,91,0,0" VerticalAlignment="Top"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="170,138,0,0" TextWrapping="Wrap" Text="{Binding Prenom}" VerticalAlignment="Top" Width="522"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="170,138,0,0" TextWrapping="Wrap" Text="{Binding Friend.Prenom}" VerticalAlignment="Top" Width="522"/>
         <Label Content="Prénom" HorizontalAlignment="Left" Margin="104,138,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Civilité" HorizontalAlignment="Left" Margin="104,187,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="170,191,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListCivilite}" SelectedValue="{Binding CivEnum}" DisplayMemberPath="ValueString" SelectedValuePath="ValueEnum"/>
+        <ComboBox HorizontalAlignment="Left" Margin="170,191,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListCivilite}" SelectedValue="{Binding Friend.Civilite}" DisplayMemberPath="ValueString" SelectedValuePath="ValueEnum"/>
 
         <Label Content="Nationalité" HorizontalAlignment="Left" Margin="104,234,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="170,238,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListNat}" SelectedValuePath="ValueString" SelectedValue="{Binding NatEnum}" DisplayMemberPath="ValueString"/>
-        <Button Command="{Binding ValidateFriend}" Content="Ajouter" HorizontalAlignment="Left" Margin="275,319,0,0" VerticalAlignment="Top" Width="268"/>
+        <ComboBox HorizontalAlignment="Left" Margin="170,238,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListNat}" SelectedValuePath="ValueString" SelectedValue="{Binding Friend.Nationalite}" DisplayMemberPath="ValueString"/>
+        <Button Command="{Binding ValidateFriend}" Content="Valider" HorizontalAlignment="Left" Margin="275,319,0,0" VerticalAlignment="Top" Width="268"/>
 
 
     </Grid>

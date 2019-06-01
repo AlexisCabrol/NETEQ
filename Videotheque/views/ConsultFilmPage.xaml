@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
-      Title="ConsultFilmPage">
+      Title="ConsultFilmPage"
+      Loaded="OnPageLoaded">
 
     <Grid>
         <Grid.RowDefinitions>

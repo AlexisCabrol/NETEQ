@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Videotheque.views"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="AddFilmPage" Height="498.214">
+      Title="AddFilmPage" Height="498.214"
+      Loaded="OnPageLoaded">
 
     <Grid>
         <Button Command="{Binding ValidateFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="302,443,0,0" VerticalAlignment="Top" Width="220"/>

@@ -12,10 +12,9 @@ namespace Videotheque.viewmodels
     class ConsultFilmPageViewModel: AbstractModel
     {
         public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
-        public ConsultFilmPageViewModel(MainViewModel mvm, Film film)
+        public ConsultFilmPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            Film = film;
         }
 
         public Film Film
@@ -24,13 +23,19 @@ namespace Videotheque.viewmodels
             set { SetValue<Film>(value); }
         }
 
+        public void Setup()
+        {
+            Film = SuperViewModel.MVMFilm;
+        }
+
         public Command UpdateFilm
         {
             get
             {
                 return new Command(() =>
                 {
-                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel, Film);
+                    SuperViewModel.MVMFilm = Film;
+                    SuperViewModel.Source = NavigationCache.GetPage<AddFilmPage, AddFilmPageViewModel>(SuperViewModel);
                 });
             }
         }

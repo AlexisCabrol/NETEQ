@@ -13,6 +13,7 @@ namespace Videotheque.services.personne
         // Service for friend management
         Task AddFriend(Personne p);
         Task DeleteFriend(Personne p);
+        Task UpdateFriend(Personne p);
         Task<ObservableCollection<Personne>> SelectAllFriend();
         Task<ObservableCollection<Personne>> SelectFriendFilter(string text);
 

@@ -84,10 +84,12 @@ namespace Videotheque.views
             if (ListFriend.SelectedItem != null)
             {
                 DeleteFriendBtn.IsEnabled = true;
+                ConsultFriendBtn.IsEnabled = true;
             }
             else
             {
                 DeleteFriendBtn.IsEnabled = false;
+                ConsultFriendBtn.IsEnabled = false;
             }
         }
     }
