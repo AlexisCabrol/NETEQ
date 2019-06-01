@@ -15,5 +15,6 @@ namespace Videotheque.services.film
         Task DeleteFilm(Film film);
         Task<Film> SelectOneFilm(Film film);
         Task<ObservableCollection<Film>> SelectFilmFilter(string text);
+        Task UpdateFilm(Film film);
     }
 }

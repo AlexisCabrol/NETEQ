@@ -15,6 +15,8 @@ namespace Videotheque.viewmodels
     class FriendPageViewModel: AbstractModel
     {
         private readonly PersonneService personneService = new PersonneServiceImpl();
+        public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
+
         public FriendPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;

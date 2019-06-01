@@ -42,5 +42,12 @@ namespace Videotheque.services.film.impl
             return new ObservableCollection<Film>(
                 list.Where(film => film.Titre.ToLower().Contains(text.ToLower())).ToList());
         }
+
+        public async Task UpdateFilm(Film film)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            context.Film.Update(film);
+            await context.SaveChangesAsync();
+        }
     }
 }

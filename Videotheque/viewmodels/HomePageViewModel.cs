@@ -18,6 +18,8 @@ namespace Videotheque.viewmodels
     class HomePageViewModel : AbstractModel
     {
         private readonly StatistiquesService statistiquesService = new StatistiqueServiceImpl();
+        public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
+
         public HomePageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;

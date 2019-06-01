@@ -12,6 +12,7 @@ namespace Videotheque.viewmodels
     class AuthorPageViewModel : AbstractModel
     {
         private readonly PersonneService personneService = new PersonneServiceImpl();
+        public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
 
         public AuthorPageViewModel(MainViewModel mvm)
         {

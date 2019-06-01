@@ -12,6 +12,7 @@ namespace Videotheque.viewmodels
     class AddFriendPageViewModel : AbstractModel
     {
         private readonly PersonneService personneService = new PersonneServiceImpl();
+        public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
         public string Nom { get { return GetValue<string>(); } set { SetValue<string>(value); } }
         public string Prenom { get { return GetValue<string>(); } set { SetValue<string>(value); } }
         public List<ComboboxUtils> ListCivilite { get; set; }

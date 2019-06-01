@@ -9,6 +9,7 @@ namespace Videotheque.viewmodels
 {
     class AddAuthorPageViewModel : AbstractModel
     {
+        public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
         public AddAuthorPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;

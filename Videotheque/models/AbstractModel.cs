@@ -32,11 +32,5 @@ namespace Videotheque.models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-        public MainViewModel SuperViewModel
-        {
-            get { return GetValue<MainViewModel>(); }
-            set { SetValue<MainViewModel>(value); }
-        }
     }
 }

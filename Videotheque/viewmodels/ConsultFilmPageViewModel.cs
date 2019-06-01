@@ -11,6 +11,7 @@ namespace Videotheque.viewmodels
 {
     class ConsultFilmPageViewModel: AbstractModel
     {
+        public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
         public ConsultFilmPageViewModel(MainViewModel mvm, Film film)
         {
             SuperViewModel = mvm;
