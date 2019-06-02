@@ -41,6 +41,11 @@ namespace Videotheque.viewmodels
             }
         }
 
+        public void ImageSetup(byte[] array)
+        {
+            Film.Affiche = array;
+        }
+
         public Command ValidateFilm
         {
             get

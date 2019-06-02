@@ -16,22 +16,6 @@ namespace Videotheque.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("Videotheque.models.Episode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("SaisonId");
-
-                    b.Property<string>("Titre");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SaisonId");
-
-                    b.ToTable("Episode");
-                });
-
             modelBuilder.Entity("Videotheque.models.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -144,26 +128,6 @@ namespace Videotheque.Migrations
                     b.Property<TimeSpan>("Duree");
 
                     b.HasDiscriminator().HasValue("Film");
-                });
-
-            modelBuilder.Entity("Videotheque.models.Saison", b =>
-                {
-                    b.HasBaseType("Videotheque.models.Media");
-
-                    b.Property<int>("Duree")
-                        .HasColumnName("Saison_Duree");
-
-                    b.Property<int>("NbSaison");
-
-                    b.HasDiscriminator().HasValue("Saison");
-                });
-
-            modelBuilder.Entity("Videotheque.models.Episode", b =>
-                {
-                    b.HasOne("Videotheque.models.Saison", "Saison")
-                        .WithMany("Episodes")
-                        .HasForeignKey("SaisonId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Videotheque.models.MediaGenre", b =>

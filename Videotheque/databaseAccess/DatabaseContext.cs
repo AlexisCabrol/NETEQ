@@ -30,13 +30,11 @@ namespace Videotheque.databaseAccess
         }
 
         public string DatabasePath { get; }
-        public DbSet<Episode> Episode { get; set; }
         public DbSet<Film> Film { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Personne> Personne { get; set; }
         public DbSet<MediaGenre> MediaGenre { get; set; }
         public DbSet<MediaPersonne> MediaPersonne { get; set; }
-        public DbSet<Saison> Saison { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

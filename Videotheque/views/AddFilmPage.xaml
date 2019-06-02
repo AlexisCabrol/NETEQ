@@ -53,5 +53,13 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="587,392,0,0" TextWrapping="Wrap" Text="Note" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Film.Note}" HorizontalAlignment="Left" Height="25" Margin="627,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Image" HorizontalAlignment="Left" Margin="65,440,0,0" VerticalAlignment="Top"/>
+        <Button Content="Parcourir" HorizontalAlignment="Left" Margin="147,436,0,0" Grid.Row="0" VerticalAlignment="Top" Width="131" Height="1" RenderTransformOrigin="0.5,0.5" Click="Button_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Page>

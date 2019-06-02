@@ -42,6 +42,11 @@ namespace Videotheque.viewmodels
             }
         }
 
+        public void ImageSetup(byte[] array)
+        {
+            Author.PhotoProfil = array;
+        }
+
         public Command ValidateAuthor
         {
             get

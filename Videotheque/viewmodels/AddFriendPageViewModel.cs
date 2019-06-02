@@ -25,6 +25,11 @@ namespace Videotheque.viewmodels
             ListNat = ComboboxUtils.init(new Pays());
         }
 
+        public void ImageSetup(byte[] array)
+        {
+            Friend.PhotoProfil = array;
+        }
+
         public void Setup()
         {
             if (SuperViewModel.MVMFriend != null)

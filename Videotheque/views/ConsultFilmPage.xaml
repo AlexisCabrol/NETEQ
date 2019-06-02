@@ -14,6 +14,8 @@
             <RowDefinition Height="660" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
+        <Image Source="{Binding Film.Affiche}" HorizontalAlignment="Left" Height="122" Margin="44,83,0,0" VerticalAlignment="Top" Width="117"/>
+
         <TextBlock Margin="225,42,0,554" TextWrapping="Wrap" Text="{Binding Film.Titre}" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
         <TextBlock Foreground="#F3F3F3" Margin="225,111,0,501" TextWrapping="Wrap" Text="{Binding Film.Statut}" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
         <TextBlock Foreground="#F3F3F3" Margin="225,164,152,466" TextWrapping="Wrap" Text="Synopsis" VerticalAlignment="Center" FontSize="20" Height="30"/>
@@ -32,6 +34,10 @@
         <TextBlock Foreground="#F3F3F3" Margin="744,516,345,118" TextWrapping="Wrap" Text="Audio description :" VerticalAlignment="Center" FontSize="12" Height="26"/>
         <TextBlock Foreground="#F3F3F3" Margin="870,473,279,161" TextWrapping="Wrap" Text="{Binding Film.LangueMedia}" VerticalAlignment="Center" FontSize="12" Height="26"/>
         <TextBlock Foreground="#F3F3F3" Margin="935,516,214,118" TextWrapping="Wrap" Text="{Binding Film.Audiodescription}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="1071,473,143,161" TextWrapping="Wrap" Text="Note :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="1149,473,0,161" TextWrapping="Wrap" Text="{Binding Film.Note}" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="1071,516,143,118" TextWrapping="Wrap" Text="Durée :" VerticalAlignment="Center" FontSize="12" Height="26"/>
+        <TextBlock Foreground="#F3F3F3" Margin="1149,516,7,118" TextWrapping="Wrap" Text="{Binding Film.Duree}" VerticalAlignment="Center" FontSize="12" Height="26"/>
 
         <ListBox Name="ListMediaPersonne" ItemsSource="{Binding FilmWithHisCollabs}" Height="71" Margin="158,571,152,18" VerticalAlignment="Center" HorizontalAlignment="Center" Width="970">
             <ItemsControl.ItemTemplate>

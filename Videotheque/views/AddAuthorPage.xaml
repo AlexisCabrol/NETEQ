@@ -20,8 +20,9 @@
         <ComboBox HorizontalAlignment="Left" Margin="170,191,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListCivilite}" SelectedValue="{Binding Author.Civilite}" DisplayMemberPath="ValueString" SelectedValuePath="ValueEnum"/>
 
         <Label Content="Nationalité" HorizontalAlignment="Left" Margin="104,234,0,0" VerticalAlignment="Top"/>
+        <Label Content="Image" HorizontalAlignment="Left" Margin="104,283,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="170,238,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListNat}" SelectedValuePath="ValueString" SelectedValue="{Binding Author.Nationalite}" DisplayMemberPath="ValueString"/>
-        <Button Command="{Binding ValidateFriend}" Content="Ajouter" HorizontalAlignment="Left" Margin="157,330,0,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+        <Button Command="{Binding ValidateAuthor}" Content="Ajouter" HorizontalAlignment="Left" Margin="157,330,0,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
@@ -29,6 +30,13 @@
             </Button.Resources>
         </Button>
         <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Right" Margin="0,330,157,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Parcourir" HorizontalAlignment="Left" Margin="170,280,0,0" Grid.Row="0" VerticalAlignment="Top" Width="131" Height="1" RenderTransformOrigin="0.5,0.5" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

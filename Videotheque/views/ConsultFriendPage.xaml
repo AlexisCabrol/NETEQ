@@ -14,6 +14,8 @@
             <RowDefinition Height="660" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
+        <Image Source="{Binding Friend.PhotoProfil}" HorizontalAlignment="Left" Height="122" Margin="44,83,0,0" VerticalAlignment="Top" Width="117"/>
+
         <TextBlock Margin="225,42,0,554" TextWrapping="Wrap" Text="{Binding Friend.Nom}" VerticalAlignment="Center" FontSize="48" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
         <TextBlock Foreground="#F3F3F3" Margin="225,111,0,501" TextWrapping="Wrap" Text="{Binding Friend.Prenom}" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" Width="903"/>
         <TextBlock Foreground="#F3F3F3" Margin="225,186,152,444" TextWrapping="Wrap" Text="{Binding Friend.Nat}" VerticalAlignment="Center" FontSize="20" Height="30"/>
