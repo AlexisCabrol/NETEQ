@@ -13,9 +13,9 @@ namespace Videotheque.services.personne
         // Service for entity
         Task AddPersonne(Personne p);
         Task DeletePersonne(Personne p);
+        Task UpdatePersonne(Personne p);
 
         // Service for friend management
-        Task UpdateFriend(Personne p);
         Task<ObservableCollection<Personne>> SelectAllFriend();
         Task<ObservableCollection<Personne>> SelectFriendFilter(string text);
 

@@ -29,8 +29,8 @@ namespace Videotheque.viewmodels
         {
             if (SuperViewModel.MVMFriend != null)
             {
-                UpdateMode = true;
                 Friend = SuperViewModel.MVMFriend;
+                UpdateMode = true;
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Videotheque.viewmodels
                 {
                     if (UpdateMode)
                     {
-                        await personneService.UpdateFriend(Friend);
+                        await personneService.UpdatePersonne(Friend);
                         SuperViewModel.MVMFriend = Friend;
                         SuperViewModel.Source = NavigationCache.GetPage<ConsultFriendPage, ConsultFriendPageViewModel>(SuperViewModel);
                     }

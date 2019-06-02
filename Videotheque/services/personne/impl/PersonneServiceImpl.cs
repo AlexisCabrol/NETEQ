@@ -59,7 +59,7 @@ namespace Videotheque.services.personne.impl
                 .ToList<Personne>());
         }
 
-        public async Task UpdateFriend(Personne p)
+        public async Task UpdatePersonne(Personne p)
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             context.Personne.Update(p);

@@ -38,22 +38,28 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer la collaboration" HorizontalAlignment="Left" Margin="371,40,0,-29" VerticalAlignment="Stretch" Click="Button_Click" Width="195">
+        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer la collaboration" HorizontalAlignment="Left" Margin="347,40,0,-29" VerticalAlignment="Stretch" Click="Button_Click" Width="195">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-
-        <Button Command="{Binding AddCollab}" Content="Ajouter une collaboration" HorizontalAlignment="Left" Margin="660,40,0,-29" VerticalAlignment="Stretch" Width="195">
+        <Button Command="{Binding UpdateCollab}" Content="Modifier" HorizontalAlignment="Left" Margin="592,40,0,-29" VerticalAlignment="Stretch" Width="123">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Command="{Binding GoBack}" Content="Retour" Margin="158.4,40.2,152,-29.4" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+        <Button Command="{Binding AddCollab}" Content="Ajouter une collaboration" HorizontalAlignment="Left" Margin="790,40,0,-29" VerticalAlignment="Stretch" Width="195">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding GoBack}" Content="Retour" Margin="0,40,80,-29" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

@@ -54,6 +54,17 @@ namespace Videotheque.viewmodels
             }
         }
 
+        public Command UpdateCollab
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<AddAuthorPage, AddAuthorPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
         public Command AddCollab
         {
             get

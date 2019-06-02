@@ -34,6 +34,7 @@ namespace Videotheque.viewmodels
             if ( SuperViewModel.MVMAuthor != null )
             {
                 Author = SuperViewModel.MVMAuthor;
+                UpdateMode = true;
             }
             else
             {
@@ -49,7 +50,7 @@ namespace Videotheque.viewmodels
                 {
                     if (UpdateMode)
                     {
-                     //   await personneService.UpdateFriend(Friend);
+                        await personneService.UpdatePersonne(Author);
                         SuperViewModel.MVMFriend = Author;
                         SuperViewModel.Source = NavigationCache.GetPage<ConsultAuthorPage, ConsultAuthorPageViewModel>(SuperViewModel);
                     }
