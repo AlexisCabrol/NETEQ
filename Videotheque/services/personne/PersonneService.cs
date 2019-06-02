@@ -10,17 +10,21 @@ namespace Videotheque.services.personne
 {
     interface PersonneService
     {
+        // Service for entity
+        Task AddPersonne(Personne p);
+        Task DeletePersonne(Personne p);
+
         // Service for friend management
-        Task AddFriend(Personne p);
-        Task DeleteFriend(Personne p);
         Task UpdateFriend(Personne p);
         Task<ObservableCollection<Personne>> SelectAllFriend();
         Task<ObservableCollection<Personne>> SelectFriendFilter(string text);
 
         // Service for author management
-        Task<ObservableCollection<Personne>> SelectAllAuthor();
-        Task<ObservableCollection<Personne>> SelectAuthorFilter(string text);
-        Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneAuthor(int id);
+        Task<ObservableCollection<Personne>> SelectAllCollab();
+        Task<ObservableCollection<Personne>> SelectCollabFilter(string text);
+        Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneCollab(int id);
         Task DeleteMediaPersonne(MediaPersonne p);
+        Task DeleteCollbaborateurs(Personne p, ObservableCollection<MediaPersonne> collab);
+        Task AddCollab(MediaPersonne p);
     }
 }

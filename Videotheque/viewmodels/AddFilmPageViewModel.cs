@@ -61,5 +61,16 @@ namespace Videotheque.viewmodels
                 });
             }
         }
+
+        public Command GoBack
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<FilmPage, FilmPageViewModel>(SuperViewModel);
+                });
+            }
+        }
     }
 }

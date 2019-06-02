@@ -9,7 +9,20 @@
       Loaded="OnPageLoaded">
 
     <Grid>
-        <Button Command="{Binding ValidateFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="302,443,0,0" VerticalAlignment="Top" Width="220"/>
+        <Button Command="{Binding ValidateFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="157,438,0,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Right" Margin="0,438,157,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="147,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" Text="{Binding Film.Titre}"/>
         <TextBlock HorizontalAlignment="Left" Margin="65,84,0,0" TextWrapping="Wrap" Text="Titre" VerticalAlignment="Top"/>
 

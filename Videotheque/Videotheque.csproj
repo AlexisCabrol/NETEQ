@@ -212,6 +212,7 @@
     <Compile Include="utils\GenerateDataUtils.cs" />
     <Compile Include="utils\StatistiqueUtils.cs" />
     <Compile Include="viewmodels\AddAuthorPageViewModel.cs" />
+    <Compile Include="viewmodels\AddCollabPageViewModel.cs" />
     <Compile Include="viewmodels\AddFilmPageViewModel.cs" />
     <Compile Include="viewmodels\AddFriendPageViewModel.cs" />
     <Compile Include="viewmodels\AuthorPageViewModel.cs" />
@@ -223,6 +224,9 @@
     <Compile Include="viewmodels\HomePageViewModel.cs" />
     <Compile Include="views\AddAuthorPage.xaml.cs">
       <DependentUpon>AddAuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\AddCollabPage.xaml.cs">
+      <DependentUpon>AddCollabPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\AddFilmPage.xaml.cs">
       <DependentUpon>AddFilmPage.xaml</DependentUpon>
@@ -266,6 +270,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="views\AddAuthorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\AddCollabPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

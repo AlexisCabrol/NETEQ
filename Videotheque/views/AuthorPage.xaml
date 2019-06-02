@@ -24,7 +24,7 @@
             <RowDefinition Height="500" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
-        <Button Command="{Binding AddAuthor}" Content="Ajouter un auteur" Margin="563,40.2,557,-29.4" VerticalAlignment="Stretch" Grid.Row="2" HorizontalAlignment="Center">
+        <Button Command="{Binding AddAuthor}" Content="Ajouter" Margin="563,40.2,557,-29.4" VerticalAlignment="Stretch" Grid.Row="2" HorizontalAlignment="Center">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

@@ -30,7 +30,7 @@ namespace Videotheque.views
         private void OnPageLoaded(object sender, RoutedEventArgs e)
         {
             this.ViewModel = DataContext as ConsultAuthorPageViewModel;
-            ViewModel.CallService();
+            ViewModel.Setup();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

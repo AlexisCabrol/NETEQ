@@ -46,7 +46,7 @@ namespace Videotheque.viewmodels
 
         public async void DeleteFriend()
         {
-            await personneService.DeleteFriend(CurrentFriend);
+            await personneService.DeletePersonne(CurrentFriend);
             CallService();
         }
 

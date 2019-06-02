@@ -16,40 +16,53 @@ namespace Videotheque.viewmodels
     {
         private readonly PersonneService personneService = new PersonneServiceImpl();
         public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
+        public ObservableCollection<MediaPersonne> AuthorWithHisFilms { get { return GetValue<ObservableCollection<MediaPersonne>>(); } set { SetValue<ObservableCollection<MediaPersonne>>(value); } }
+        public MediaPersonne CurrentMediaPersonne { get { return GetValue<MediaPersonne>(); } set { SetValue<MediaPersonne>(value); } }
+        public Personne Author { get { return GetValue<Personne>(); } set { SetValue<Personne>(value); } }
 
-        public ConsultAuthorPageViewModel(MainViewModel mvm, Personne personne)
+        public ConsultAuthorPageViewModel(MainViewModel mvm)
         {
             SuperViewModel = mvm;
-            Author = personne;
         }
 
-        public Personne Author
+        public void Setup()
         {
-            get { return GetValue<Personne>(); }
-            set { SetValue<Personne>(value); }
-        }
-
-        public ObservableCollection<MediaPersonne> AuthorWithHisFilms
-        {
-            get { return GetValue<ObservableCollection<MediaPersonne>>(); }
-            set { SetValue<ObservableCollection<MediaPersonne>>(value); }
-        }
-
-        public MediaPersonne CurrentMediaPersonne
-        {
-            get { return GetValue<MediaPersonne>(); }
-            set { SetValue<MediaPersonne>(value); }
+            Author = SuperViewModel.MVMAuthor;
+            CallService();
         }
 
         public async void CallService()
         {
-            AuthorWithHisFilms = await personneService.SelectAllFilmForOneAuthor(Author.Id);
+            AuthorWithHisFilms = await personneService.SelectAllFilmForOneCollab(Author.Id);
         }
 
         public async void DeleteMediaPersonne()
         {
             await personneService.DeleteMediaPersonne(CurrentMediaPersonne);
             CallService();
+        }
+
+        public Command DeletePers
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await personneService.DeleteCollbaborateurs(Author, AuthorWithHisFilms);
+                    SuperViewModel.Source = NavigationCache.GetPage<AuthorPage, AuthorPageViewModel>(SuperViewModel);
+                });
+            }
+        }
+
+        public Command AddCollab
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<AddCollabPage, AddCollabPageViewModel>(SuperViewModel);
+                });
+            }
         }
 
         public Command GoBack

@@ -51,13 +51,24 @@ namespace Videotheque.viewmodels
                     {
                         await personneService.UpdateFriend(Friend);
                         SuperViewModel.MVMFriend = Friend;
-                        SuperViewModel.Source = NavigationCache.GetPage<ConsultFriendPage, ConsultFriendPageViewModel>(SuperViewModel, Friend);
+                        SuperViewModel.Source = NavigationCache.GetPage<ConsultFriendPage, ConsultFriendPageViewModel>(SuperViewModel);
                     }
                     else
                     {
-                        await personneService.AddFriend(Friend);
+                        await personneService.AddPersonne(Friend);
                         SuperViewModel.Source = NavigationCache.GetPage<FriendPage, FriendPageViewModel>(SuperViewModel);
                     }
+                });
+            }
+        }
+
+        public Command GoBack
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SuperViewModel.Source = NavigationCache.GetPage<FriendPage, FriendPageViewModel>(SuperViewModel);
                 });
             }
         }

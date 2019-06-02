@@ -7,20 +7,20 @@ namespace Videotheque.services.personne.impl
 {
     class PersonneServiceImpl : PersonneService
     {
-        public async Task<ObservableCollection<Personne>> SelectAllAuthor()
+        public async Task<ObservableCollection<Personne>> SelectAllCollab()
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             return new ObservableCollection<Personne>(context.MediaPersonne
-                .Where(b => b.Fonction == models.enums.Fonction.Acteur)
                 .Select(b => b.Personne)
+                .Distinct()
                 .ToList<Personne>());
         }
 
-        public async Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneAuthor(int id)
+        public async Task<ObservableCollection<MediaPersonne>> SelectAllFilmForOneCollab(int id)
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             return new ObservableCollection<MediaPersonne>(context.MediaPersonne
-                .Where(b => b.PersonneId == id && b.Fonction == models.enums.Fonction.Acteur)
+                .Where(b => b.PersonneId == id)
                 .ToList());
         }
 
@@ -37,14 +37,14 @@ namespace Videotheque.services.personne.impl
             return context.MediaPersonne.Where(b => b.PersonneId == id).First();
         }
 
-        public async Task<ObservableCollection<Personne>> SelectAuthorFilter(string text)
+        public async Task<ObservableCollection<Personne>> SelectCollabFilter(string text)
         {
-            ObservableCollection<Personne> list = await SelectAllAuthor();
+            ObservableCollection<Personne> list = await SelectAllCollab();
             return new ObservableCollection<Personne>(
                 list.Where(author => author.GetIdentity().ToLower().Contains(text.ToLower())).ToList());
         }
 
-        public async Task DeleteFriend(Personne p)
+        public async Task DeletePersonne(Personne p)
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             context.Personne.Remove(p);
@@ -72,12 +72,26 @@ namespace Videotheque.services.personne.impl
             return new ObservableCollection<Personne>(
                 list.Where(p => p.GetIdentity().ToLower().Contains(text.ToLower())).ToList());
         }
-        public async Task AddFriend(Personne p)
+        public async Task AddPersonne(Personne p)
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             context.Personne.Add(p);
             await context.SaveChangesAsync();
         }
 
+        public async Task DeleteCollbaborateurs(Personne p, ObservableCollection<MediaPersonne> collab)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            context.MediaPersonne.RemoveRange(collab);
+            context.Personne.Remove(p);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task AddCollab(MediaPersonne p)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            context.MediaPersonne.Add(p);
+            await context.SaveChangesAsync();
+        }
     }
 }

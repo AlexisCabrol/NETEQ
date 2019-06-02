@@ -17,19 +17,19 @@ using Videotheque.viewmodels;
 namespace Videotheque.views
 {
     /// <summary>
-    /// Logique d'interaction pour AddAuthorPage.xaml
+    /// Logique d'interaction pour AddCollabPage.xaml
     /// </summary>
-    public partial class AddAuthorPage : Page
+    public partial class AddCollabPage : Page
     {
-        private AddAuthorPageViewModel ViewModel;
-        public AddAuthorPage()
+        private AddCollabPageViewModel ViewModel;
+        public AddCollabPage()
         {
             InitializeComponent();
         }
 
-        private void OnPageLoaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModel = DataContext as AddAuthorPageViewModel;
+            ViewModel = DataContext as AddCollabPageViewModel;
             ViewModel.Setup();
         }
     }

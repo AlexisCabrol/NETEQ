@@ -23,12 +23,30 @@
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Media.Titre}" />
+                            <TextBlock Text=" " />
+                            <TextBlock Text="Fonction : " />
+                            <TextBlock Text="{Binding Fonction}" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
-        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer" HorizontalAlignment="Left" Margin="158,40.2,962,-29.4" VerticalAlignment="Stretch" Click="Button_Click">
+        <Button Command="{Binding DeletePers}" Content="Supprimer la personne" HorizontalAlignment="Left" Margin="95,40,0,-29" VerticalAlignment="Stretch" Width="195">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Name="DeleteBtn" IsEnabled="False" Content="Supprimer la collaboration" HorizontalAlignment="Left" Margin="371,40,0,-29" VerticalAlignment="Stretch" Click="Button_Click" Width="195">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Command="{Binding AddCollab}" Content="Ajouter une collaboration" HorizontalAlignment="Left" Margin="660,40,0,-29" VerticalAlignment="Stretch" Width="195">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>

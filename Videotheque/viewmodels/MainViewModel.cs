@@ -13,5 +13,6 @@ namespace Videotheque.viewmodels
         public Page Source { get { return GetValue<Page>(); } set { SetValue<Page>(value); } }
         public Film MVMFilm { get { return GetValue<Film>(); } set { SetValue<Film>(value); } }
         public Personne MVMFriend { get { return GetValue<Personne>(); } set { SetValue<Personne>(value); } }
+        public Personne MVMAuthor { get { return GetValue<Personne>(); } set { SetValue<Personne>(value); } }
     }
 }

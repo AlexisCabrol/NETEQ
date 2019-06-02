@@ -34,7 +34,7 @@
             </lvc:PieChart.ChartLegend>
         </lvc:PieChart>
 
-        <Button Command="{Binding Film}" Content="Voir la liste des films" Margin="104,0,144,43.6" Grid.Row="2">
+        <Button Command="{Binding Film}" Content="Gestion des films" Margin="104,0,144,43.6" Grid.Row="2">
 
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -42,7 +42,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Command="{Binding Author}" Content="Voir la liste des auteurs" Margin="329,0,311,43.6" Grid.ColumnSpan="2" Grid.Row="2">
+        <Button Command="{Binding Author}" Content="Gestion des collaborateurs" Margin="570,0,530,44" Grid.ColumnSpan="2" Grid.Row="2" Width="180" VerticalAlignment="Bottom">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
@@ -58,7 +58,7 @@
         </Button>
         <TextBlock Foreground="#F3F3F3" Margin="10,0,246,-0.4" TextWrapping="Wrap" Text="© Copyright Cabrol Alexis" Height="26" VerticalAlignment="Bottom" Grid.Row="2"/>
         <Rectangle Fill="Black" Height="65" Stroke="Black" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBlock Foreground="#D10000" HorizontalAlignment="Center" TextWrapping="Wrap" Text="NETEQ" VerticalAlignment="Top" Margin="330,7,330,0" FontSize="40" Width="140" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <TextBlock Foreground="#D10000" HorizontalAlignment="Center" TextWrapping="Wrap" Text="NETEQ" VerticalAlignment="Top" Margin="585,7,555,0" FontSize="40" Width="140" FontWeight="Bold" Grid.ColumnSpan="2"/>
         <TextBlock Foreground="#F3F3F3" Margin="101,46.2,0,129.6" Grid.Row="2" TextWrapping="Wrap" Text="Nombre de films par genre" HorizontalAlignment="Left" Width="197" FontSize="16"/>
         <TextBlock Foreground="#F3F3F3" Margin="362,170,346,14.6" TextWrapping="Wrap" Text="100" FontWeight="Bold" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Width="92" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <TextBlock Foreground="#F3F3F3" Margin="358,7,334,12.8" TextWrapping="Wrap" Text="films présents" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="108" FontSize="16" Grid.Row="1"/>

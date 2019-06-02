@@ -20,8 +20,20 @@
 
         <Label Content="Nationalité" HorizontalAlignment="Left" Margin="104,234,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="170,238,0,0" VerticalAlignment="Top" Width="522" ItemsSource="{Binding ListNat}" SelectedValuePath="ValueString" SelectedValue="{Binding Friend.Nationalite}" DisplayMemberPath="ValueString"/>
-        <Button Command="{Binding ValidateFriend}" Content="Valider" HorizontalAlignment="Left" Margin="275,319,0,0" VerticalAlignment="Top" Width="268"/>
-
+        <Button Command="{Binding ValidateFriend}" Content="Ajouter" HorizontalAlignment="Left" Margin="157,330,0,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Right" Margin="0,330,157,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Page>

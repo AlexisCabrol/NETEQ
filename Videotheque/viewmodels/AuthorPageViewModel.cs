@@ -13,6 +13,8 @@ namespace Videotheque.viewmodels
     {
         private readonly PersonneService personneService = new PersonneServiceImpl();
         public MainViewModel SuperViewModel { get { return GetValue<MainViewModel>(); } set { SetValue<MainViewModel>(value); } }
+        public ObservableCollection<Personne> Authors { get { return GetValue<ObservableCollection<Personne>>(); } set { SetValue<ObservableCollection<Personne>>(value); }}
+        public Personne CurrentAuthor { get { return GetValue<Personne>(); } set { SetValue<Personne>(value); } }
 
         public AuthorPageViewModel(MainViewModel mvm)
         {
@@ -21,24 +23,12 @@ namespace Videotheque.viewmodels
 
         public async void CallService()
         {
-            this.Authors = await personneService.SelectAllAuthor();
+            Authors = await personneService.SelectAllCollab();
         }
 
         public async void SearchByText(string text)
         {
-            Authors = await personneService.SelectAuthorFilter(text);
-        }
-
-        public ObservableCollection<Personne> Authors
-        {
-            get { return GetValue<ObservableCollection<Personne>>(); }
-            set { SetValue<ObservableCollection<Personne>>(value); }
-        }
-
-        public Personne CurrentAuthor
-        {
-            get { return GetValue<Personne>(); }
-            set { SetValue<Personne>(value); }
+            Authors = await personneService.SelectCollabFilter(text);
         }
 
         public Command ConsultAuthor
@@ -47,7 +37,8 @@ namespace Videotheque.viewmodels
             {
                 return new Command(() =>
                 {
-                    SuperViewModel.Source = NavigationCache.GetPage<ConsultAuthorPage, ConsultAuthorPageViewModel>(SuperViewModel, CurrentAuthor);
+                    SuperViewModel.MVMAuthor = CurrentAuthor;
+                    SuperViewModel.Source = NavigationCache.GetPage<ConsultAuthorPage, ConsultAuthorPageViewModel>(SuperViewModel);
                 });
             }
         }
@@ -58,6 +49,7 @@ namespace Videotheque.viewmodels
             {
                 return new Command(() =>
                 {
+                    SuperViewModel.MVMAuthor = null;
                     SuperViewModel.Source = NavigationCache.GetPage<AddAuthorPage, AddAuthorPageViewModel>(SuperViewModel);
                 });
             }
