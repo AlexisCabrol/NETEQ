@@ -33,6 +33,21 @@
         <TextBlock Foreground="#F3F3F3" Margin="870,473,279,161" TextWrapping="Wrap" Text="{Binding Film.LangueMedia}" VerticalAlignment="Center" FontSize="12" Height="26"/>
         <TextBlock Foreground="#F3F3F3" Margin="935,516,214,118" TextWrapping="Wrap" Text="{Binding Film.Audiodescription}" VerticalAlignment="Center" FontSize="12" Height="26"/>
 
+        <ListBox Name="ListMediaPersonne" ItemsSource="{Binding FilmWithHisCollabs}" Height="71" Margin="158,571,152,18" VerticalAlignment="Center" HorizontalAlignment="Center" Width="970">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Personne.Nom}" />
+                            <TextBlock Text=" " />
+                            <TextBlock Text="{Binding Personne.Prenom}" />
+                            <TextBlock Text=" Fonction : " />
+                            <TextBlock Text="{Binding Fonction}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
 
         <Button Command="{Binding UpdateFilm}" Content="Modifier" Margin="152,0,0,30" Grid.Row="1" VerticalAlignment="Stretch" Height="28" Width="160" HorizontalAlignment="Left">
             <Button.Resources>

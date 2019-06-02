@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Videotheque.models;
 
@@ -20,7 +17,7 @@ namespace Videotheque.services.film.impl
         public async Task<ObservableCollection<Film>> SelectAllFilmAsync()
         {
             var context = await databaseAccess.DatabaseContext.GetCurrent();
-            return new ObservableCollection<Film>( context.Film.ToList<Film>() );
+            return new ObservableCollection<Film>(context.Film.ToList<Film>());
         }
 
         public async Task DeleteFilm(Film film)
@@ -48,6 +45,14 @@ namespace Videotheque.services.film.impl
             var context = await databaseAccess.DatabaseContext.GetCurrent();
             context.Film.Update(film);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<ObservableCollection<MediaPersonne>> SelectAllCollabForOneFilm(int id)
+        {
+            var context = await databaseAccess.DatabaseContext.GetCurrent();
+            return new ObservableCollection<MediaPersonne>(context.MediaPersonne
+                .Where(b => b.MediaId == id)
+                .ToList());
         }
     }
 }

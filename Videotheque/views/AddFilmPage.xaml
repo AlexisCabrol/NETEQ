@@ -4,19 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Videotheque.views"
-      mc:Ignorable="d" d:DesignWidth="800"
-      Title="AddFilmPage" Height="498.214"
+      mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+      Title="AddFilmPage"
       Loaded="OnPageLoaded">
 
     <Grid>
-        <Button Command="{Binding ValidateFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="157,438,0,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+        <Button Command="{Binding ValidateFilm}" Content="Ajouter le film" HorizontalAlignment="Left" Margin="147,618,0,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Right" Margin="0,438,157,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
+        <Button Command="{Binding GoBack}" Content="Retour" HorizontalAlignment="Right" Margin="0,618,160,0" VerticalAlignment="Top" Width="220" Grid.Row="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="7"/>
